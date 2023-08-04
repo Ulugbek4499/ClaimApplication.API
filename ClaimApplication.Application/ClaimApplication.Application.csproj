@@ -24,12 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\AppealPredmets\Commands\DeleteAppealPredmet\" />
-    <Folder Include="UseCases\AppealPredmets\Commands\UpdateAppealPredmet\" />
     <Folder Include="UseCases\AppealPredmets\Queries\GetAllAppealPredmets\" />
     <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetById\" />
     <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetsPagination\" />
-    <Folder Include="UseCases\AppealTypes\Commands\" />
     <Folder Include="UseCases\AppealTypes\Queries\" />
     <Folder Include="UseCases\Applications\Commands\" />
     <Folder Include="UseCases\Applications\Queries\" />
