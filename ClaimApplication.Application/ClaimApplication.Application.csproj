@@ -24,8 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Applications\Commands\" />
-    <Folder Include="UseCases\Applications\Queries\" />
+    <Folder Include="UseCases\Applications\Commands\CreateApplication\" />
+    <Folder Include="UseCases\Applications\Commands\DeleteApplication\" />
+    <Folder Include="UseCases\Applications\Commands\UpdateApplication\" />
     <Folder Include="UseCases\ResponsiblePeople\Commands\" />
     <Folder Include="UseCases\ResponsiblePeople\Queries\" />
   </ItemGroup>
