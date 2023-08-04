@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using ClaimApplication.Domain.Entities;
 
 namespace ClaimApplication.Infrastructure.Persistence.Configurations
 {
-    internal class AppealPredmetConfiguration
+
+    public class AppealPredmetConfiguration : IEntityTypeConfiguration<AppealPredmet>
     {
+        public void Configure(EntityTypeBuilder<AppealPredmet> builder)
+        {
+            builder.Property(t => t.Name)
+              .HasMaxLength(200)
+              .IsRequired();
+        }
     }
 }

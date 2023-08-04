@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClaimApplication.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClaimApplication.Infrastructure.Persistence.Configurations
 {
-    internal class AppealTypeConfiguration
+    public class AppealTypeConfiguration : IEntityTypeConfiguration<AppealType>
     {
+        public void Configure(EntityTypeBuilder<AppealType> builder)
+        {
+            builder.Property(t => t.Name)
+              .HasMaxLength(200)
+              .IsRequired();
+        }
     }
 }

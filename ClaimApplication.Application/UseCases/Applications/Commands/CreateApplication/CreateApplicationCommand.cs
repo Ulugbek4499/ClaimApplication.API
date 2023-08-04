@@ -1,17 +1,30 @@
 ﻿using AutoMapper;
 using ClaimApplication.Application.Commons.Interfaces;
+using ClaimApplication.Domain.Entities;
 using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateApplication
 {
     public class CreateApplicationCommand : IRequest<Guid>
     {
-        public Guid ProductId { get; set; }
-        public Guid SupplierId { get; set; }
-        public double IncomingCount { get; set; }
-        public double IncomingPrice { get; set; }
-        public double Markup { get; set; }
-        public DateTime IncomingDate { get; set; }
+        public string Inn { get; set; }
+        public string NameOfBussiness { get; set; }
+        public int AppealNumber { get; set; }
+        public DateTime AppealDate { get; set; }
+        public string MembershipAgreementNumber { get; set; }
+        public DateTime MembershipAgreementDate { get; set; }
+        public string CertificateNumber { get; set; } = null!;
+        public DateTime CertificateGivenDate { get; set; }
+        public string? PreviousAppeal { get; set; } 
+        public string AppealText { get; set; }
+        public decimal? TotalClaimAmount { get; set; }
+        public decimal? MainDebt { get; set; }
+        public decimal? CalculatedLateCharges { get; set; }
+        public decimal? AmountOfFine { get; set; }
+        public decimal? Percentage { get; set; }
+
+        public Guid AppealPredmetId { get; set; }
+        public Guid AppealTypeId { get; set; }
     }
     public class CreateApplicationCommandHandler : IRequestHandler<CreateApplicationCommand, Guid>
     {

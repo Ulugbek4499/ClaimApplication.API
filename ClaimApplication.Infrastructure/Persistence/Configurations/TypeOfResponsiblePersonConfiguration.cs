@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClaimApplication.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClaimApplication.Infrastructure.Persistence.Configurations
 {
-    internal class TypeOfResponsiblePersonConfiguration
+    public class TypeOfResponsiblePersonConfiguration : IEntityTypeConfiguration<TypeOfResponsiblePerson>
     {
+        public void Configure(EntityTypeBuilder<TypeOfResponsiblePerson> builder)
+        {
+            builder.Property(t => t.Name)
+              .HasMaxLength(200)
+              .IsRequired();
+        }
     }
 }

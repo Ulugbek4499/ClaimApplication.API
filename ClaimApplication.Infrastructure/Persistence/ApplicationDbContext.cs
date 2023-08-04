@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
 using ClaimApplication.Infrastructure.Persistence.Interceptors;
@@ -30,7 +23,6 @@ namespace ClaimApplication.Infrastructure.Persistence
         {
             _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

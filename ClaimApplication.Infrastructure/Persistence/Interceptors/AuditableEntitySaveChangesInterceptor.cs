@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClaimApplication.Application.Commons.Interfaces;
+using ClaimApplication.Domain.Commons;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace ClaimApplication.Infrastructure.Persistence.Interceptors
