@@ -1,9 +1,8 @@
 ﻿using ClaimApplication.Application.Commons.Interfaces;
-using ClaimApplication.Infrastructure.Persistence.Interceptors;
 using ClaimApplication.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 
 namespace ClaimApplication.Infrastructure
 {
@@ -14,14 +13,14 @@ namespace ClaimApplication.Infrastructure
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DbConnect"));
-               // options.UseLazyLoadingProxies();
+                // options.UseLazyLoadingProxies();
             });
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
             //services.AddScoped<AuditableEntitySaveChangesInterceptor>();
-         //   services.AddScoped<IDeleteImg, DeleteImg>();
-         //   services.AddScoped<ISaveImg, SaveImg>();
+            //   services.AddScoped<IDeleteImg, DeleteImg>();
+            //   services.AddScoped<ISaveImg, SaveImg>();
             return services;
         }
     }

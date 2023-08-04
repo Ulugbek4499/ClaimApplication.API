@@ -1,5 +1,4 @@
 ﻿using ClaimApplication.Application.UseCases.ResponsiblePeople.Response;
-using ClaimApplication.Domain.Entities;
 
 namespace ClaimApplication.Application.UseCases.Applications.Response
 {

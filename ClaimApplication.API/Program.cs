@@ -1,5 +1,5 @@
-using ClaimApplication.Infrastructure;
 using ClaimApplication.Application;
+using ClaimApplication.Infrastructure;
 
 
 namespace ClaimApplication.API
@@ -15,7 +15,7 @@ namespace ClaimApplication.API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-        
+
 
             var app = builder.Build();
 

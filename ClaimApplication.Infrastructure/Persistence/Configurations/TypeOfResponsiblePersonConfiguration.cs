@@ -1,6 +1,6 @@
 ﻿using ClaimApplication.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ClaimApplication.Infrastructure.Persistence.Configurations
 {

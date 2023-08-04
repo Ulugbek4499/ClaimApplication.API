@@ -12,7 +12,7 @@ namespace ClaimApplication.Domain.Entities
         public DateTime MembershipAgreementDate { get; set; }
         public string CertificateNumber { get; set; } = null!;
         public DateTime CertificateGivenDate { get; set; }
-        public string? PreviousAppeal { get; set; }  
+        public string? PreviousAppeal { get; set; }
         public string AppealText { get; set; }
         public decimal? TotalClaimAmount { get; set; }
         public decimal? MainDebt { get; set; }
@@ -22,7 +22,7 @@ namespace ClaimApplication.Domain.Entities
 
         public Guid AppealPredmetId { get; set; }
         public virtual AppealPredmet AppealPredmet { get; set; }
-        
+
         public Guid AppealTypeId { get; set; }
         public AppealType AppealType { get; set; }
 

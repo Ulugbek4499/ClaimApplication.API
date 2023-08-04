@@ -2,7 +2,7 @@
 
 namespace ClaimApplication.Domain.Entities
 {
-    public class ResponsiblePerson:BaseAuditableEntity
+    public class ResponsiblePerson : BaseAuditableEntity
     {
         public string OrdinalNumber { get; set; } = null!;
         public string Inn { get; set; } = null!;

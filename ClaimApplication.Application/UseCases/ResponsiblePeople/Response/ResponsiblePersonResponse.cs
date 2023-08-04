@@ -1,6 +1,4 @@
-﻿using ClaimApplication.Domain.Entities;
-
-namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Response
+﻿namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Response
 {
     public class ResponsiblePersonResponse
     {

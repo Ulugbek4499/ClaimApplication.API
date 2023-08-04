@@ -10,7 +10,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.UpdateAp
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-     
+
     }
     public class UpdateAppealPredmetCommandHandler : IRequestHandler<UpdateAppealPredmetCommand>
     {
@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.UpdateAp
         {
 
             AppealPredmet? appealPredmet = await _context.AppealPredmets.FindAsync(request.Id);
-                _mapper.Map(request, appealPredmet);
+            _mapper.Map(request, appealPredmet);
 
             if (appealPredmet is null)
                 throw new NotFoundException(nameof(AppealPredmet), request.Id);

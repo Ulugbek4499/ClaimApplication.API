@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ClaimApplication.Application.Commons.Interfaces;
-using ClaimApplication.Domain.Entities;
 using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateApplication
@@ -15,7 +14,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
         public DateTime MembershipAgreementDate { get; set; }
         public string CertificateNumber { get; set; } = null!;
         public DateTime CertificateGivenDate { get; set; }
-        public string? PreviousAppeal { get; set; } 
+        public string? PreviousAppeal { get; set; }
         public string AppealText { get; set; }
         public decimal? TotalClaimAmount { get; set; }
         public decimal? MainDebt { get; set; }

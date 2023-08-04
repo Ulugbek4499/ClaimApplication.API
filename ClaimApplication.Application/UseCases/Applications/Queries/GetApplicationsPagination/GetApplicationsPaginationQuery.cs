@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using ClaimApplication.Application.Commons.Exceptions;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Application.Commons.Models;
 using ClaimApplication.Application.UseCases.Applications.Response;
-using ClaimApplication.Domain.Entities;
 using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationsPagination
