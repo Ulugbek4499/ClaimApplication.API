@@ -25,12 +25,12 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.UpdateAp
 
         public async Task Handle(UpdateAppealPredmetCommand request, CancellationToken cancellationToken)
         {
+
             AppealPredmet? appealPredmet = await _context.AppealPredmets.FindAsync(request.Id);
-          
-            _mapper.Map(appealPredmet, request);
+                _mapper.Map(request, appealPredmet);
 
             if (appealPredmet is null)
-                throw new NotFoundException(nameof(appealPredmet), request.Id);
+                throw new NotFoundException(nameof(AppealPredmet), request.Id);
 
             await _context.SaveChangesAsync(cancellationToken);
         }

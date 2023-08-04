@@ -32,7 +32,7 @@ namespace ClaimApplication.Application.UseCases.TypeOfResponsiblePeople.Commands
         {
             TypeOfResponsiblePerson? TypeOfResponsiblePerson = await _context.TypeOfResponsiblePeople.FindAsync(request.Id);
 
-            _mapper.Map(TypeOfResponsiblePerson, request);
+            _mapper.Map(request, TypeOfResponsiblePerson);
 
             if (TypeOfResponsiblePerson is null)
                 throw new NotFoundException(nameof(TypeOfResponsiblePerson), request.Id);

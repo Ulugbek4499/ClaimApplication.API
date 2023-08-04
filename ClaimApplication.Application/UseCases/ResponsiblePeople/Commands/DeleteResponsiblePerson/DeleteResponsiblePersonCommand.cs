@@ -1,29 +1,38 @@
-﻿using ClaimApplication.Application.Commons.Exceptions;
+﻿using AutoMapper;
+using ClaimApplication.Application.Commons.Exceptions;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
 using MediatR;
 
 namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.DeleteResponsiblePerson
 {
-    public class DeleteResponsiblePersonCommand : IRequest
-    {
-        public Guid Id { get; set; }
-    }
+    public record DeleteResponsiblePersonCommand(Guid Id) : IRequest;
+
     public class DeleteResponsiblePersonCommandHandler : IRequestHandler<DeleteResponsiblePersonCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private IApplicationDbContext _dbContext;
+        private IMapper _mapper;
 
-        public DeleteResponsiblePersonCommandHandler(IApplicationDbContext context)
+        public DeleteResponsiblePersonCommandHandler(IApplicationDbContext dbContext, IMapper mapper)
         {
-            _context = context;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task Handle(DeleteResponsiblePersonCommand request, CancellationToken cancellationToken)
         {
-            ResponsiblePerson? ResponsiblePerson = await _context.ResponsiblePeople.FindAsync(request.Id);
+            ResponsiblePerson ResponsiblePerson = FilterIfResponsiblePersonExsists(request.Id);
 
-            if (ResponsiblePerson is null)
-                throw new NotFoundException(nameof(ResponsiblePerson), request.Id);
+            _dbContext.ResponsiblePeople.Remove(ResponsiblePerson);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
+
+        private ResponsiblePerson FilterIfResponsiblePersonExsists(Guid id)
+            => _dbContext.ResponsiblePeople
+            .FirstOrDefault(c => c.Id == id)
+                ?? throw new NotFoundException(
+                    " There is no ResponsiblePerson with id. ");
+
     }
+
 }

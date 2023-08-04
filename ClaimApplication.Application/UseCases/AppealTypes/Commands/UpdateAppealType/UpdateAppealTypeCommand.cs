@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.AppealTypes.Commands.UpdateAppea
         {
             AppealType? AppealType = await _context.AppealTypes.FindAsync(request.Id);
 
-            _mapper.Map(AppealType, request);
+            _mapper.Map(request, AppealType);
 
             if (AppealType is null)
                 throw new NotFoundException(nameof(AppealType), request.Id);

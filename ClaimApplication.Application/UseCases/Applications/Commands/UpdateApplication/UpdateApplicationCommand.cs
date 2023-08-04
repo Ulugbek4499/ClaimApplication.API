@@ -41,7 +41,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.UpdateAppl
         public async Task Handle(UpdateApplicationCommand request, CancellationToken cancellationToken)
         {
             Domain.Entities.Application? application = await _context.Applications.FindAsync(request.Id);
-            _mapper.Map(application, request);
+            _mapper.Map(request, application);
 
             if (application is null)
                 throw new NotFoundException(nameof(application), request.Id);

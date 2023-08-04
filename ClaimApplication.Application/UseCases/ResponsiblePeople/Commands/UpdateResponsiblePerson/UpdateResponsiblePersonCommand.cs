@@ -32,7 +32,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Updat
         public async Task Handle(UpdateResponsiblePersonCommand request, CancellationToken cancellationToken)
         {
             ResponsiblePerson? responsiblePerson = await _context.ResponsiblePeople.FindAsync(request.Id);
-            _mapper.Map(responsiblePerson, request);
+            _mapper.Map(request, responsiblePerson);
 
             if (responsiblePerson is null)
                 throw new NotFoundException(nameof(ResponsiblePerson), request.Id);

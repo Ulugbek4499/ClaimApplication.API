@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using ClaimApplication.Application.Commons.Exceptions;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
@@ -10,25 +11,33 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.TypeOfResponsiblePeople.Commands.DeleteTypeOfResponsiblePerson
 {
-    public class DeleteTypeOfResponsiblePersonCommand : IRequest
-    {
-        public Guid Id { get; set; }
-    }
+    public record DeleteTypeOfResponsiblePersonCommand(Guid Id) : IRequest;
+
     public class DeleteTypeOfResponsiblePersonCommandHandler : IRequestHandler<DeleteTypeOfResponsiblePersonCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private IApplicationDbContext _dbContext;
+        private IMapper _mapper;
 
-        public DeleteTypeOfResponsiblePersonCommandHandler(IApplicationDbContext context)
+        public DeleteTypeOfResponsiblePersonCommandHandler(IApplicationDbContext dbContext, IMapper mapper)
         {
-            _context = context;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task Handle(DeleteTypeOfResponsiblePersonCommand request, CancellationToken cancellationToken)
         {
-            TypeOfResponsiblePerson? TypeOfResponsiblePerson = await _context.TypeOfResponsiblePeople.FindAsync(request.Id);
+            TypeOfResponsiblePerson TypeOfResponsiblePerson = FilterIfTypeOfResponsiblePersonExsists(request.Id);
 
-            if (TypeOfResponsiblePerson is null)
-                throw new NotFoundException(nameof(TypeOfResponsiblePerson), request.Id);
+            _dbContext.TypeOfResponsiblePeople.Remove(TypeOfResponsiblePerson);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
+
+        private TypeOfResponsiblePerson FilterIfTypeOfResponsiblePersonExsists(Guid id)
+            => _dbContext.TypeOfResponsiblePeople
+            .FirstOrDefault(c => c.Id == id)
+                ?? throw new NotFoundException(
+                    " There is no TypeOfResponsiblePerson with id. ");
+
     }
+
 }
