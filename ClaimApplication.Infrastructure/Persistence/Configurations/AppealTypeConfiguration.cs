@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClaimApplication.Application.Commons.Interfaces
+namespace ClaimApplication.Infrastructure.Persistence.Configurations
 {
-    public interface ICurrentUserService
+    internal class AppealTypeConfiguration
     {
-        string Username { get; }
     }
 }

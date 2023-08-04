@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClaimApplication.Application.Commons.Interfaces
+namespace ClaimApplication.Infrastructure
 {
-    public interface ICurrentUserService
+    internal class ConfigureServices
     {
-        string Username { get; }
     }
 }
