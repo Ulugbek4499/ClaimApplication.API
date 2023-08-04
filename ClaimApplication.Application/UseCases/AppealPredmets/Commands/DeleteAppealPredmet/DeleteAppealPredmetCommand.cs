@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClaimApplication.Application.Commons.Exceptions;
+﻿using ClaimApplication.Application.Commons.Exceptions;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
 using MediatR;
@@ -26,6 +21,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.DeleteAp
         public async Task Handle(DeleteAppealPredmetCommand request, CancellationToken cancellationToken)
         {
             AppealPredmet? appealPredmet = await _context.AppealPredmets.FindAsync(request.Id);
+
             if (appealPredmet is null)
                 throw new NotFoundException(nameof(appealPredmet), request.Id);
         }
