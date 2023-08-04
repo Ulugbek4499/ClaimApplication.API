@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.6.0" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClaimApplication.Domain\ClaimApplication.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\AppealPredmets\Commands\DeleteAppealPredmet\" />
+    <Folder Include="UseCases\AppealPredmets\Commands\UpdateAppealPredmet\" />
+    <Folder Include="UseCases\AppealPredmets\Queries\GetAllAppealPredmets\" />
+    <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetById\" />
+    <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetsPagination\" />
+    <Folder Include="UseCases\AppealTypes\Commands\" />
+    <Folder Include="UseCases\AppealTypes\Queries\" />
+    <Folder Include="UseCases\Applications\Commands\" />
+    <Folder Include="UseCases\Applications\Queries\" />
+    <Folder Include="UseCases\ResponsiblePeople\Commands\" />
+    <Folder Include="UseCases\ResponsiblePeople\Queries\" />
+    <Folder Include="UseCases\TypeOfResponsiblePeople\Commands\" />
+    <Folder Include="UseCases\TypeOfResponsiblePeople\Queries\" />
+  </ItemGroup>
+
+</Project>
