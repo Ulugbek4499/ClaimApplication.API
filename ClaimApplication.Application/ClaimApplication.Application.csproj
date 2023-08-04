@@ -24,9 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetById\" />
-    <Folder Include="UseCases\AppealPredmets\Queries\GetAppealPredmetsPagination\" />
-    <Folder Include="UseCases\AppealTypes\Queries\" />
     <Folder Include="UseCases\Applications\Commands\" />
     <Folder Include="UseCases\Applications\Queries\" />
     <Folder Include="UseCases\ResponsiblePeople\Commands\" />
