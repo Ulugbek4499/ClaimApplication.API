@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.CreateResponsiblePerson
 {
-    internal class CreateResponsiblePerson
+    internal class CreateResponsiblePersonCommand
     {
     }
 }
