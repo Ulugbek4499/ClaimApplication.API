@@ -1,6 +1,8 @@
 ﻿using FluentValidation.Results;
 using FluentValidation;
 using MediatR;
+using ValidationException = FluentValidation.ValidationException;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace ClaimApplication.Application.Commons.Behaviours
 {
