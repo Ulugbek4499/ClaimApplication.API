@@ -28,8 +28,6 @@
     <Folder Include="UseCases\Applications\Queries\" />
     <Folder Include="UseCases\ResponsiblePeople\Commands\" />
     <Folder Include="UseCases\ResponsiblePeople\Queries\" />
-    <Folder Include="UseCases\TypeOfResponsiblePeople\Commands\" />
-    <Folder Include="UseCases\TypeOfResponsiblePeople\Queries\" />
   </ItemGroup>
 
 </Project>
