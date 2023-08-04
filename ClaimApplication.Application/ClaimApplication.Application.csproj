@@ -23,11 +23,4 @@
     <ProjectReference Include="..\ClaimApplication.Domain\ClaimApplication.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Applications\Commands\CreateApplication\" />
-    <Folder Include="UseCases\Applications\Commands\DeleteApplication\" />
-    <Folder Include="UseCases\Applications\Commands\UpdateApplication\" />
-    <Folder Include="UseCases\ResponsiblePeople\Commands\" />
-  </ItemGroup>
-
 </Project>
