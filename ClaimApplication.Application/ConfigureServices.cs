@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using ClaimApplication.Application.Commons.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +9,7 @@ namespace ClaimApplication.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            //  services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            //ervices.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(option =>
             {

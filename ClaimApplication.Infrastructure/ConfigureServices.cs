@@ -19,7 +19,7 @@ namespace ClaimApplication.Infrastructure
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
-            services.AddScoped<AuditableEntitySaveChangesInterceptor>();
+            //services.AddScoped<AuditableEntitySaveChangesInterceptor>();
          //   services.AddScoped<IDeleteImg, DeleteImg>();
          //   services.AddScoped<ISaveImg, SaveImg>();
             return services;

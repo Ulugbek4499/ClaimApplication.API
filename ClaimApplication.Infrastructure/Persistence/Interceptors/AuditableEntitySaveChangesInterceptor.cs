@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace ClaimApplication.Infrastructure.Persistence.Interceptors
 {
-    public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
+  /*  public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
     {
         private readonly ICurrentUserService _currentUserService;
 
@@ -52,5 +52,5 @@ namespace ClaimApplication.Infrastructure.Persistence.Interceptors
                 }
             }
         }
-    }
+    }*/
 }
