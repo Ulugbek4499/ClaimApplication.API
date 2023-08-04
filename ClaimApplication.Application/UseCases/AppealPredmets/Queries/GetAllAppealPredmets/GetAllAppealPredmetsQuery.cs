@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Application.UseCases.AppealPredmets.Response;
+using ClaimApplication.Domain.Entities;
 using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAllAppealPredmets
