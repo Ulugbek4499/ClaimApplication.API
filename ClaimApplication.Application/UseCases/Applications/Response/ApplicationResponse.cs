@@ -4,6 +4,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
 {
     public class ApplicationResponse
     {
+        public Guid Id { get; set; }
         public string Inn { get; set; }
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
@@ -12,7 +13,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
         public DateTime MembershipAgreementDate { get; set; }
         public string CertificateNumber { get; set; } = null!;
         public DateTime CertificateGivenDate { get; set; }
-        public string? PreviousAppeal { get; set; }  //PAY ATTENTION
+        public string? PreviousAppeal { get; set; } 
         public string AppealText { get; set; }
         public decimal? TotalClaimAmount { get; set; }
         public decimal? MainDebt { get; set; }

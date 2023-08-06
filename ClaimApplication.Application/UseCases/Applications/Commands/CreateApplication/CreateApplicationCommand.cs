@@ -7,6 +7,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
     public class CreateApplicationCommand : IRequest<Guid>
     {
         public string Inn { get; set; }
+        public string OrdinalNumber { get; set; }
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
         public DateTime AppealDate { get; set; }

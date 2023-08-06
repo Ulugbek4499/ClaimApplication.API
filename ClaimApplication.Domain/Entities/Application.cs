@@ -5,6 +5,7 @@ namespace ClaimApplication.Domain.Entities
     public class Application : BaseAuditableEntity
     {
         public string Inn { get; set; }
+        public string OrdinalNumber { get; set; }
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
         public DateTime AppealDate { get; set; }
