@@ -15,13 +15,13 @@ namespace ClaimApplication.API.Controllers
     public class AppealPredmetController : BaseApiController
     {
         [HttpPost("[action]")]
-        public async ValueTask<Guid> CreateAppealPredmet(CreateAppealPredmetCommand command)
+        public async ValueTask<int> CreateAppealPredmet(CreateAppealPredmetCommand command)
         {
             return await _mediator.Send(command);
         }
 
         [HttpGet("[action]")]
-        public async ValueTask<AppealPredmetResponse> GetAppealPredmetById(Guid Id)
+        public async ValueTask<AppealPredmetResponse> GetAppealPredmetById(int Id)
         {
             return await _mediator.Send(new GetAppealPredmetByIdQuery(Id));
         }

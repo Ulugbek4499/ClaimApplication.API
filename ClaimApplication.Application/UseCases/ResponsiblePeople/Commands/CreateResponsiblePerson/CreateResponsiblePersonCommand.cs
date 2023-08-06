@@ -5,7 +5,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.CreateResponsiblePerson
 {
-    public class CreateResponsiblePersonCommand : IRequest<Guid>
+    public class CreateResponsiblePersonCommand : IRequest<int>
     {
         public string OrdinalNumber { get; set; } = null!;
         public string Inn { get; set; } = null!;
@@ -13,10 +13,10 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Creat
         public string Address { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
 
-        public Guid ApplicationId { get; set; }
-        public Guid TypeOfResponsiblePersonId { get; set; }
+        public int ApplicationId { get; set; }
+        public int TypeOfResponsiblePersonId { get; set; }
     }
-    public class CreateResponsiblePersonCommandHandler : IRequestHandler<CreateResponsiblePersonCommand, Guid>
+    public class CreateResponsiblePersonCommandHandler : IRequestHandler<CreateResponsiblePersonCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Creat
             _context = context;
         }
 
-        public async Task<Guid> Handle(CreateResponsiblePersonCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateResponsiblePersonCommand request, CancellationToken cancellationToken)
         {
             ResponsiblePerson responsiblePerson = _mapper.Map<ResponsiblePerson>(request);
             await _context.ResponsiblePeople.AddAsync(responsiblePerson, cancellationToken);

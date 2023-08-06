@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationById
 {
-    public record GetApplicationByIdQuery(Guid Id) : IRequest<ApplicationResponse>;
+    public record GetApplicationByIdQuery(int Id) : IRequest<ApplicationResponse>;
 
     public class GetApplicationByIdQueryHandler : IRequestHandler<GetApplicationByIdQuery, ApplicationResponse>
     {
@@ -28,7 +28,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Queries.GetApplicat
             return await Task.FromResult(result);
         }
 
-        private Domain.Entities.Application FilterIfApplicationExsists(Guid id)
+        private Domain.Entities.Application FilterIfApplicationExsists(int id)
             => _dbContext.Applications
                 .Find(id)
                      ?? throw new NotFoundException(

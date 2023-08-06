@@ -56,10 +56,10 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Reports
                 TableName = "Empdata"
             };
 
-            excelDataTable.Columns.Add("Id", typeof(Guid));
+            excelDataTable.Columns.Add("Id", typeof(int));
             excelDataTable.Columns.Add("Name", typeof(string));
             excelDataTable.Columns.Add("Description", typeof(string));
-            excelDataTable.Columns.Add("ResponsiblePersonTypeId", typeof(Guid));
+            excelDataTable.Columns.Add("ResponsiblePersonTypeId", typeof(int));
 
             var ResponsiblePeopleList = _mapper.Map<List<ResponsiblePersonResponse>>(AllResponsiblePeople);
 
@@ -67,7 +67,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Reports
             {
                 ResponsiblePeopleList.ForEach(item =>
                 {
-                    excelDataTable.Rows.Add(item.Id, item.Name, item.Description, item.ResponsiblePersonTypeId);
+                    excelDataTable.Rows.Add(item.Id, item.Inn, item.FullName, item.ApplicationId);
                 });
             }
 

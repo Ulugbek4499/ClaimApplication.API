@@ -5,7 +5,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Commands.DeleteApplication
 {
-    public record DeleteApplicationCommand(Guid Id) : IRequest;
+    public record DeleteApplicationCommand(int Id) : IRequest;
 
     public class DeleteApplicationCommandHandler : IRequestHandler<DeleteApplicationCommand>
     {
@@ -26,7 +26,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.DeleteAppl
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        private Domain.Entities.Application FilterIfApplicationExsists(Guid id)
+        private Domain.Entities.Application FilterIfApplicationExsists(int id)
             => _dbContext.Applications
             .FirstOrDefault(c => c.Id == id)
                 ?? throw new NotFoundException(

@@ -20,10 +20,10 @@ namespace ClaimApplication.Domain.Entities
         public decimal? AmountOfFine { get; set; }
         public decimal? Percentage { get; set; }
 
-        public Guid AppealPredmetId { get; set; }
+        public int AppealPredmetId { get; set; }
         public virtual AppealPredmet AppealPredmet { get; set; }
 
-        public Guid AppealTypeId { get; set; }
+        public int AppealTypeId { get; set; }
         public AppealType AppealType { get; set; }
 
         public virtual ICollection<ResponsiblePerson> ResponsiblePeople { get; set; } = new List<ResponsiblePerson>();

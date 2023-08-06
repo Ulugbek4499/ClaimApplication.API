@@ -15,13 +15,13 @@ namespace ClaimApplication.API.Controllers
     public class ApplicationController : BaseApiController
     {
         [HttpPost("[action]")]
-        public async ValueTask<Guid> CreateApplication(CreateApplicationCommand command)
+        public async ValueTask<int> CreateApplication(CreateApplicationCommand command)
         {
             return await _mediator.Send(command);
         }
 
         [HttpGet("[action]")]
-        public async ValueTask<ApplicationResponse> GetApplicationById(Guid Id)
+        public async ValueTask<ApplicationResponse> GetApplicationById(int Id)
         {
             return await _mediator.Send(new GetApplicationByIdQuery(Id));
         }

@@ -16,13 +16,13 @@ namespace ClaimResponsiblePerson.API.Controllers
     public class ResponsiblePersonController : BaseApiController
     {
         [HttpPost("[action]")]
-        public async ValueTask<Guid> CreateResponsiblePerson(CreateResponsiblePersonCommand command)
+        public async ValueTask<int> CreateResponsiblePerson(CreateResponsiblePersonCommand command)
         {
             return await _mediator.Send(command);
         }
 
         [HttpGet("[action]")]
-        public async ValueTask<ResponsiblePersonResponse> GetResponsiblePersonById(Guid Id)
+        public async ValueTask<ResponsiblePersonResponse> GetResponsiblePersonById(int Id)
         {
             return await _mediator.Send(new GetResponsiblePersonByIdQuery(Id));
         }

@@ -15,13 +15,13 @@ namespace ClaimApplication.API.Controllers
     public class AppealTypeController : BaseApiController
     {
         [HttpPost("[action]")]
-        public async ValueTask<Guid> CreateAppealType(CreateAppealTypeCommand command)
+        public async ValueTask<int> CreateAppealType(CreateAppealTypeCommand command)
         {
             return await _mediator.Send(command);
         }
 
         [HttpGet("[action]")]
-        public async ValueTask<AppealTypeResponse> GetAppealTypeById(Guid Id)
+        public async ValueTask<AppealTypeResponse> GetAppealTypeById(int Id)
         {
             return await _mediator.Send(new GetAppealTypeByIdQuery(Id));
         }

@@ -7,7 +7,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.UpdateAppl
 {
     public class UpdateApplicationCommand : IRequest
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Inn { get; set; }
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
@@ -24,8 +24,8 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.UpdateAppl
         public decimal? AmountOfFine { get; set; }
         public decimal? Percentage { get; set; }
 
-        public Guid AppealPredmetId { get; set; }
-        public Guid AppealTypeId { get; set; }
+        public int AppealPredmetId { get; set; }
+        public int AppealTypeId { get; set; }
     }
     public class UpdateApplicationCommandHandler : IRequestHandler<UpdateApplicationCommand>
     {

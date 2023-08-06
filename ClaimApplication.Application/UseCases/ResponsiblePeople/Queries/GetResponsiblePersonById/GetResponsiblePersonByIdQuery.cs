@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ClaimResponsiblePerson.ResponsiblePerson.UseCases.ResponsiblePeople.Queries.GetResponsiblePersonById
 {
-    public record GetResponsiblePersonByIdQuery(Guid Id) : IRequest<ResponsiblePersonResponse>;
+    public record GetResponsiblePersonByIdQuery(int Id) : IRequest<ResponsiblePersonResponse>;
 
     public class GetResponsiblePersonByIdQueryHandler : IRequestHandler<GetResponsiblePersonByIdQuery, ResponsiblePersonResponse>
     {
@@ -28,7 +28,7 @@ namespace ClaimResponsiblePerson.ResponsiblePerson.UseCases.ResponsiblePeople.Qu
             return await Task.FromResult(result);
         }
 
-        private ClaimApplication.Domain.Entities.ResponsiblePerson FilterIfResponsiblePersonExsists(Guid id)
+        private ClaimApplication.Domain.Entities.ResponsiblePerson FilterIfResponsiblePersonExsists(int id)
              => _dbContext.ResponsiblePeople
                  .Find(id)
                       ?? throw new NotFoundException(

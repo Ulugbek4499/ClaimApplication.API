@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.DeleteAppealPredmet
 {
-    public record DeleteAppealPredmetCommand(Guid Id) : IRequest;
+    public record DeleteAppealPredmetCommand(int Id) : IRequest;
 
     public class DeleteAppealPredmetCommandHandler : IRequestHandler<DeleteAppealPredmetCommand>
     {
@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.DeleteAp
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        private AppealPredmet FilterIfAppealPredmetExsists(Guid id)
+        private AppealPredmet FilterIfAppealPredmetExsists(int id)
             => _dbContext.AppealPredmets
             .FirstOrDefault(c => c.Id == id)
                 ?? throw new NotFoundException(

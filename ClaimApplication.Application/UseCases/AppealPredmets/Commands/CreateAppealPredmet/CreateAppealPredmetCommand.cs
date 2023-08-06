@@ -5,11 +5,11 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.CreateAppealPredmet
 {
-    public class CreateAppealPredmetCommand : IRequest<Guid>
+    public class CreateAppealPredmetCommand : IRequest<int>
     {
         public string Name { get; set; }
     }
-    public class CreateAppealPredmetCommandHandler : IRequestHandler<CreateAppealPredmetCommand, Guid>
+    public class CreateAppealPredmetCommandHandler : IRequestHandler<CreateAppealPredmetCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -20,7 +20,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.CreateAp
             _context = context;
         }
 
-        public async Task<Guid> Handle(CreateAppealPredmetCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateAppealPredmetCommand request, CancellationToken cancellationToken)
         {
             AppealPredmet appealPredmet = _mapper.Map<AppealPredmet>(request);
             await _context.AppealPredmets.AddAsync(appealPredmet, cancellationToken);

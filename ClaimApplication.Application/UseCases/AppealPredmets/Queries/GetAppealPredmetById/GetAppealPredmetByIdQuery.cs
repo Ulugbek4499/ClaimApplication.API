@@ -7,7 +7,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAppealPredmetById
 {
-    public record GetAppealPredmetByIdQuery(Guid Id) : IRequest<AppealPredmetResponse>;
+    public record GetAppealPredmetByIdQuery(int Id) : IRequest<AppealPredmetResponse>;
 
     public class GetAppealPredmetByIdQueryHandler : IRequestHandler<GetAppealPredmetByIdQuery, AppealPredmetResponse>
     {
@@ -29,7 +29,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAppeal
             return await Task.FromResult(result);
         }
 
-        private AppealPredmet FilterIfAppealPredmetExsists(Guid id)
+        private AppealPredmet FilterIfAppealPredmetExsists(int id)
             => _dbContext.AppealPredmets
                 .Find(id)
                      ?? throw new NotFoundException(

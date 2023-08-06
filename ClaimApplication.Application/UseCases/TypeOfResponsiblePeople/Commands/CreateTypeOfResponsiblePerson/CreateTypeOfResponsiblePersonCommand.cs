@@ -5,11 +5,11 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.TypeOfResponsiblePeople.Commands.CreateTypeOfResponsiblePerson
 {
-    public class CreateTypeOfResponsiblePersonCommand : IRequest<Guid>
+    public class CreateTypeOfResponsiblePersonCommand : IRequest<int>
     {
         public string Name { get; set; }
     }
-    public class CreateTypeOfResponsiblePersonCommandHandler : IRequestHandler<CreateTypeOfResponsiblePersonCommand, Guid>
+    public class CreateTypeOfResponsiblePersonCommandHandler : IRequestHandler<CreateTypeOfResponsiblePersonCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -20,7 +20,7 @@ namespace ClaimApplication.Application.UseCases.TypeOfResponsiblePeople.Commands
             _context = context;
         }
 
-        public async Task<Guid> Handle(CreateTypeOfResponsiblePersonCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateTypeOfResponsiblePersonCommand request, CancellationToken cancellationToken)
         {
             TypeOfResponsiblePerson TypeOfResponsiblePerson = _mapper.Map<TypeOfResponsiblePerson>(request);
             await _context.TypeOfResponsiblePeople.AddAsync(TypeOfResponsiblePerson, cancellationToken);

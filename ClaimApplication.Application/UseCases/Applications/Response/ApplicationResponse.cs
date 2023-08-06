@@ -4,7 +4,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
 {
     public class ApplicationResponse
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Inn { get; set; }
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
@@ -20,8 +20,8 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
         public decimal? CalculatedLateCharges { get; set; }
         public decimal? AmountOfFine { get; set; }
         public decimal? Percentage { get; set; }
-        public Guid AppealPredmetId { get; set; }
-        public Guid AppealTypeId { get; set; }
+        public int AppealPredmetId { get; set; }
+        public int AppealTypeId { get; set; }
         public DateTime IncomingDate { get; set; }
 
         public DateTime CreatedDate { get; set; }

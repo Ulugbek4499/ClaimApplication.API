@@ -8,15 +8,15 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Updat
 {
     public class UpdateResponsiblePersonCommand : IRequest
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string OrdinalNumber { get; set; } = null!;
         public string Inn { get; set; } = null!;
         public string FullName { get; set; } = null!;
         public string Address { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
 
-        public Guid ApplicationId { get; set; }
-        public Guid TypeOfResponsiblePersonId { get; set; }
+        public int ApplicationId { get; set; }
+        public int TypeOfResponsiblePersonId { get; set; }
     }
     public class UpdateResponsiblePersonCommandHandler : IRequestHandler<UpdateResponsiblePersonCommand>
     {

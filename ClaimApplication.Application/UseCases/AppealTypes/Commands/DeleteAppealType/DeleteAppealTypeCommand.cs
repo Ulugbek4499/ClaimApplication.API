@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealTypes.Commands.DeleteAppealType
 {
-    public record DeleteAppealTypeCommand(Guid Id) : IRequest;
+    public record DeleteAppealTypeCommand(int Id) : IRequest;
 
     public class DeleteAppealTypeCommandHandler : IRequestHandler<DeleteAppealTypeCommand>
     {
@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.AppealTypes.Commands.DeleteAppea
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        private AppealType FilterIfAppealTypeExsists(Guid id)
+        private AppealType FilterIfAppealTypeExsists(int id)
             => _dbContext.AppealTypes
             .FirstOrDefault(c => c.Id == id)
                 ?? throw new NotFoundException(

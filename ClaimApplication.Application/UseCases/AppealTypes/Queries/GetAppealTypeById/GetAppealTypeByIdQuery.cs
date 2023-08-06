@@ -7,7 +7,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAppealTypeById
 {
-    public record GetAppealTypeByIdQuery(Guid Id) : IRequest<AppealTypeResponse>;
+    public record GetAppealTypeByIdQuery(int Id) : IRequest<AppealTypeResponse>;
 
     public class GetAppealTypeByIdQueryHandler : IRequestHandler<GetAppealTypeByIdQuery, AppealTypeResponse>
     {
@@ -29,7 +29,7 @@ namespace ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAppealTyp
             return await Task.FromResult(result);
         }
 
-        private AppealType FilterIfAppealTypeExsists(Guid id)
+        private AppealType FilterIfAppealTypeExsists(int id)
             => _dbContext.AppealTypes
                 .Find(id)
                      ?? throw new NotFoundException(

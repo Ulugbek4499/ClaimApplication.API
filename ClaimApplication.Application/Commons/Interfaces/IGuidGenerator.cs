@@ -1,7 +1,7 @@
 ﻿namespace ClaimApplication.Application.Commons.Interfaces
 {
-    public interface IGuidGenerator
+    public interface IintGenerator
     {
-        Guid Id { get; }
+        int Id { get; }
     }
 }

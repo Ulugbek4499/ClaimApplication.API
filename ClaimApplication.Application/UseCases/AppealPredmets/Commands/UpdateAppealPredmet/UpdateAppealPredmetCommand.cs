@@ -8,7 +8,7 @@ namespace ClaimApplication.Application.UseCases.AppealPredmets.Commands.UpdateAp
 {
     public class UpdateAppealPredmetCommand : IRequest
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
     }

@@ -10,10 +10,10 @@ namespace ClaimApplication.Domain.Entities
         public string Address { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
 
-        public Guid ApplicationId { get; set; }
+        public int ApplicationId { get; set; }
         public virtual Application Application { get; set; } = null!;
 
-        public Guid TypeOfResponsiblePersonId { get; set; }
+        public int TypeOfResponsiblePersonId { get; set; }
         public virtual TypeOfResponsiblePerson TypeOfResponsiblePerson { get; set; } = null!;
     }
 }

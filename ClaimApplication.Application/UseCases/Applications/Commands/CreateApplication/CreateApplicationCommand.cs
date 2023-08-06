@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateApplication
 {
-    public class CreateApplicationCommand : IRequest<Guid>
+    public class CreateApplicationCommand : IRequest<int>
     {
         public string Inn { get; set; }
         public string NameOfBussiness { get; set; }
@@ -22,10 +22,10 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
         public decimal? AmountOfFine { get; set; }
         public decimal? Percentage { get; set; }
 
-        public Guid AppealPredmetId { get; set; }
-        public Guid AppealTypeId { get; set; }
+        public int AppealPredmetId { get; set; }
+        public int AppealTypeId { get; set; }
     }
-    public class CreateApplicationCommandHandler : IRequestHandler<CreateApplicationCommand, Guid>
+    public class CreateApplicationCommandHandler : IRequestHandler<CreateApplicationCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -36,7 +36,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
             _context = context;
         }
 
-        public async Task<Guid> Handle(CreateApplicationCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateApplicationCommand request, CancellationToken cancellationToken)
         {
             Domain.Entities.Application Application = _mapper.Map<Domain.Entities.Application>(request);
             await _context.Applications.AddAsync(Application, cancellationToken);

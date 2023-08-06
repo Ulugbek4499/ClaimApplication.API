@@ -8,7 +8,7 @@ namespace ClaimApplication.Application.UseCases.TypeOfResponsiblePeople.Commands
 {
     public class UpdateTypeOfResponsiblePersonCommand : IRequest
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
     }

@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.DeleteResponsiblePerson
 {
-    public record DeleteResponsiblePersonCommand(Guid Id) : IRequest;
+    public record DeleteResponsiblePersonCommand(int Id) : IRequest;
 
     public class DeleteResponsiblePersonCommandHandler : IRequestHandler<DeleteResponsiblePersonCommand>
     {
@@ -27,7 +27,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Delet
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        private ResponsiblePerson FilterIfResponsiblePersonExsists(Guid id)
+        private ResponsiblePerson FilterIfResponsiblePersonExsists(int id)
             => _dbContext.ResponsiblePeople
             .FirstOrDefault(c => c.Id == id)
                 ?? throw new NotFoundException(
