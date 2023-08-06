@@ -1,7 +1,5 @@
 ﻿using ClaimApplication.API.Controllers;
 using ClaimApplication.Application.Commons.Models;
-using ClaimApplication.Application.UseCases.Applications.Reports;
-using ClaimApplication.Application.UseCases.Applications.Response;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.CreateResponsiblePerson;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.DeleteResponsiblePerson;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.UpdateResponsiblePerson;
