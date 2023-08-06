@@ -1,7 +1,10 @@
-﻿namespace ClaimApplication.Domain.Commons
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ClaimApplication.Domain.Commons
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
     }
 }
