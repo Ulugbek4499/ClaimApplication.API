@@ -1,9 +1,12 @@
 ﻿using ClaimApplication.API.Controllers;
 using ClaimApplication.Application.Commons.Models;
+using ClaimApplication.Application.UseCases.Applications.Reports;
+using ClaimApplication.Application.UseCases.Applications.Response;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.CreateResponsiblePerson;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.DeleteResponsiblePerson;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.UpdateResponsiblePerson;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Queries.GetResponsiblePeoplePagination;
+using ClaimApplication.Application.UseCases.ResponsiblePeople.Reports;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Response;
 using ClaimResponsiblePeople.ResponsiblePeople.UseCases.ResponsiblePeople.Queries.GetAllResponsiblePeople;
 using ClaimResponsiblePerson.ResponsiblePerson.UseCases.ResponsiblePeople.Queries.GetResponsiblePersonById;
@@ -19,6 +22,13 @@ namespace ClaimResponsiblePerson.API.Controllers
         public async ValueTask<int> CreateResponsiblePerson(CreateResponsiblePersonCommand command)
         {
             return await _mediator.Send(command);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<List<ResponsiblePersonResponse>> AddResponsiblePeopleFromExcel(IFormFile excelfile)
+        {
+            var result = await _mediator.Send(new AddResponsiblePeopleFromExcel(excelfile));
+            return result;
         }
 
         [HttpGet("[action]")]
@@ -38,6 +48,13 @@ namespace ClaimResponsiblePerson.API.Controllers
             [FromQuery] GetResponsiblePeoplePaginationQuery query)
         {
             return await _mediator.Send(query);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<FileResult> GetResponsiblePeopleInExcel(string fileName = "responsiblepeople")
+        {
+            var result = await _mediator.Send(new GetResponsiblePeopleExcel { FileName = fileName });
+            return File(result.FileContents, result.Option, result.FileName);
         }
 
         [HttpPut("[action]")]

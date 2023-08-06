@@ -5,6 +5,7 @@ using ClaimApplication.Application.UseCases.Applications.Commands.UpdateApplicat
 using ClaimApplication.Application.UseCases.Applications.Queries.GetAllApplications;
 using ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationById;
 using ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationsPagination;
+using ClaimApplication.Application.UseCases.Applications.Reports;
 using ClaimApplication.Application.UseCases.Applications.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,13 @@ namespace ClaimApplication.API.Controllers
         public async ValueTask<int> CreateApplication(CreateApplicationCommand command)
         {
             return await _mediator.Send(command);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<List<ApplicationResponse>> AddApplicationsFromExcel(IFormFile excelfile)
+        {
+            var result = await _mediator.Send(new AddApplicationsFromExcel(excelfile));
+            return result;
         }
 
         [HttpGet("[action]")]
@@ -37,6 +45,13 @@ namespace ClaimApplication.API.Controllers
             [FromQuery] GetApplicationsPaginationQuery query)
         {
             return await _mediator.Send(query);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<FileResult> GetApplicationsInExcel(string fileName = "application")
+        {
+            var result = await _mediator.Send(new GetApplicationsExcel { FileName = fileName });
+            return File(result.FileContents, result.Option, result.FileName);
         }
 
         [HttpPut("[action]")]
