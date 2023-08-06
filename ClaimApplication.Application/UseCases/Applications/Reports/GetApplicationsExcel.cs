@@ -3,7 +3,6 @@ using AutoMapper;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Application.Commons.Models;
 using ClaimApplication.Application.UseCases.Applications.Response;
-using ClaimApplication.Domain.Entities;
 using ClosedXML.Excel;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -92,7 +91,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             excelDataTable.Columns.Add("CalculatedLateCharges", typeof(decimal));
             excelDataTable.Columns.Add("AmountOfFine", typeof(decimal));
             excelDataTable.Columns.Add("Percentage", typeof(decimal));
-            excelDataTable.Columns.Add("AppealPredmet Id", typeof(int)); 
+            excelDataTable.Columns.Add("AppealPredmet Id", typeof(int));
             excelDataTable.Columns.Add("AppealTypeId", typeof(int));
             excelDataTable.Columns.Add("Created By", typeof(string));
             excelDataTable.Columns.Add("Created Date", typeof(DateTime));
@@ -106,9 +105,11 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             {
                 ApplicationsList.ForEach(item =>
                 {
-                    excelDataTable.Rows.Add(item.Id, item.OrdinalNumber, item.Inn, item.FullName, item.Address,
-                        item.PhoneNumber, item.ApplicationId, item.TypeOfApplicationId, item.CreatedBy,
-                        item.CreatedDate, item.ModifyBy, item.ModifyDate);
+                    excelDataTable.Rows.Add(item.Id, item.Inn, item.NameOfBussiness, item.AppealNumber, item.AppealDate,
+                        item.MembershipAgreementNumber, item.MembershipAgreementDate, item.CertificateNumber, item.CertificateGivenDate,
+                        item.PreviousAppeal, item.AppealText, item.TotalClaimAmount, item.MainDebt, item.CalculatedLateCharges,
+                        item.AmountOfFine, item.Percentage, item.AppealPredmetId, item.AppealTypeId,
+                        item.CreatedBy, item.CreatedDate, item.ModifyBy, item.ModifyDate);
                 });
             }
 
@@ -116,15 +117,3 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
         }
     }
 }
-/*
-
-
-public decimal?  { get; set; }
-public int AppealPredmetId { get; set; }
-public int AppealTypeId { get; set; }
-public DateTime IncomingDate { get; set; }
-
-public DateTime CreatedDate { get; set; }
-public DateTime ModifyDate { get; set; }
-public string? CreatedBy { get; set; }
-public string? ModifyBy { get; set; }

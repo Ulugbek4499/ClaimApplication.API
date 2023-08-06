@@ -54,6 +54,8 @@ namespace ClaimApplication.API.Controllers
             return File(result.FileContents, result.Option, result.FileName);
         }
 
+
+
         [HttpPut("[action]")]
         public async ValueTask<IActionResult> UpdateApplication(UpdateApplicationCommand command)
         {

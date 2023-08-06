@@ -30,9 +30,9 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
                 .MaximumLength(100)
                 .WithMessage("NameOfBussiness is required");
 
-           RuleFor(t => t.MembershipAgreementDate)
-                .NotNull()
-                .WithMessage("Appeal Date date is required.");
+            RuleFor(t => t.MembershipAgreementDate)
+                 .NotNull()
+                 .WithMessage("Appeal Date date is required.");
 
             RuleFor(d => d.CertificateNumber)
                .NotEmpty()
@@ -78,7 +78,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Commands.CreateAppl
                 .GreaterThan(0)
                 .WithMessage("IncomingCount is required.");
 
-         
+
             RuleFor(t => t.AppealPredmetId)
                 .NotEmpty()
                 .NotNull()

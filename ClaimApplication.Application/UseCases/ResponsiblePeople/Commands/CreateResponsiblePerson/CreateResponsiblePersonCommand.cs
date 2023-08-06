@@ -10,7 +10,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Creat
         public string OrdinalNumber { get; set; }
         public string Inn { get; set; }
         public string FullName { get; set; }
-        public string Address { get; set; } 
+        public string Address { get; set; }
         public string PhoneNumber { get; set; }
 
         public int ApplicationId { get; set; }

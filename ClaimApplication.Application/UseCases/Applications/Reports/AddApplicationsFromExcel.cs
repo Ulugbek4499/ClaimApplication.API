@@ -42,21 +42,21 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
                         {
                             Inn = sheet1.Cell(row, 1).GetString(),
                             NameOfBussiness = sheet1.Cell(row, 2).GetString(),
-                            AppealNumber = int.Parse(sheet1.Cell(row, 3).GetString()), 
+                            AppealNumber = int.Parse(sheet1.Cell(row, 3).GetString()),
                             AppealDate = DateTime.Parse(sheet1.Cell(row, 4).GetString()),
                             MembershipAgreementNumber = sheet1.Cell(row, 5).GetString(),
-                            MembershipAgreementDate = DateTime.Parse(sheet1.Cell(row, 6).GetString()), 
+                            MembershipAgreementDate = DateTime.Parse(sheet1.Cell(row, 6).GetString()),
                             CertificateNumber = sheet1.Cell(row, 7).GetString(),
-                            CertificateGivenDate = DateTime.Parse(sheet1.Cell(row, 8).GetString()), 
-                            PreviousAppeal = sheet1.Cell(row, 9).GetString(), 
+                            CertificateGivenDate = DateTime.Parse(sheet1.Cell(row, 8).GetString()),
+                            PreviousAppeal = sheet1.Cell(row, 9).GetString(),
                             AppealText = sheet1.Cell(row, 10).GetString(),
-                            TotalClaimAmount = decimal.Parse(sheet1.Cell(row, 11).GetString()), 
+                            TotalClaimAmount = decimal.Parse(sheet1.Cell(row, 11).GetString()),
                             MainDebt = decimal.Parse(sheet1.Cell(row, 12).GetString()),
-                            CalculatedLateCharges = decimal.Parse(sheet1.Cell(row, 13).GetString()), 
-                            AmountOfFine = decimal.Parse(sheet1.Cell(row, 14).GetString()), 
-                            Percentage = decimal.Parse(sheet1.Cell(row, 15).GetString()), 
-                            AppealPredmetId = int.Parse(sheet1.Cell(row, 16).GetString()), 
-                            AppealTypeId = int.Parse(sheet1.Cell(row, 17).GetString()) 
+                            CalculatedLateCharges = decimal.Parse(sheet1.Cell(row, 13).GetString()),
+                            AmountOfFine = decimal.Parse(sheet1.Cell(row, 14).GetString()),
+                            Percentage = decimal.Parse(sheet1.Cell(row, 15).GetString()),
+                            AppealPredmetId = int.Parse(sheet1.Cell(row, 16).GetString()),
+                            AppealTypeId = int.Parse(sheet1.Cell(row, 17).GetString())
                         };
 
                         result.Add(Application);

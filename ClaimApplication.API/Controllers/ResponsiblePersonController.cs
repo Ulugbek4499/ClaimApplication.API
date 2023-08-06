@@ -55,6 +55,13 @@ namespace ClaimResponsiblePerson.API.Controllers
             return File(result.FileContents, result.Option, result.FileName);
         }
 
+        [HttpGet("[action]")]
+        public async Task<FileResult> GetResponsiblePersonByIdPDF(int id)
+        {
+            var result = await _mediator.Send(new GetResponsiblePersonByIdPDFQuery(id));
+            return File(result.FileContents, result.Options, result.FileName);
+        }
+
         [HttpPut("[action]")]
         public async ValueTask<IActionResult> UpdateResponsiblePerson(UpdateResponsiblePersonCommand command)
         {
