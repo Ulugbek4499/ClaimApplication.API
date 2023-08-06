@@ -6,7 +6,6 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
     {
         public Guid Id { get; set; }
         public string Inn { get; set; }
-        public string OrdinalNumber { get; set; } = null!;
         public string NameOfBussiness { get; set; }
         public int AppealNumber { get; set; }
         public DateTime AppealDate { get; set; }
