@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Reports
 {
-    public record AddApplicationsFromExcel(IFormFile ExcelFile) : IRequest<List<ResponsiblePersonResponse>>;
+    public record AddResponsiblePeopleFromExcel(IFormFile ExcelFile) : IRequest<List<ResponsiblePersonResponse>>;
 
-    public class AddResponsiblePeopleFromExcelHandler : IRequestHandler<AddApplicationsFromExcel, List<ResponsiblePersonResponse>>
+    public class AddResponsiblePeopleFromExcelHandler : IRequestHandler<AddResponsiblePeopleFromExcel, List<ResponsiblePersonResponse>>
     {
 
         private readonly IApplicationDbContext _context;
@@ -23,7 +23,7 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Reports
             _mapper = mapper;
         }
 
-        public async Task<List<ResponsiblePersonResponse>> Handle(AddApplicationsFromExcel request, CancellationToken cancellationToken)
+        public async Task<List<ResponsiblePersonResponse>> Handle(AddResponsiblePeopleFromExcel request, CancellationToken cancellationToken)
         {
             if (request.ExcelFile == null || request.ExcelFile.Length == 0)
                 throw new ArgumentNullException("File", "file is empty or null");
