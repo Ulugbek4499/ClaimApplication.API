@@ -47,9 +47,13 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Reports
                     {
                         var ResponsiblePerson = new ResponsiblePerson()
                         {
-                            Inn = sheet1.Cell(row, 1).GetString(),
-                            FullName = sheet1.Cell(row, 2).GetString(),
-                            ApplicationId = int.Parse(sheet1.Cell(row, 3).GetString())
+                            OrdinalNumber = sheet1.Cell(row, 1).GetString(),
+                            Inn = sheet1.Cell(row, 2).GetString(),
+                            FullName = sheet1.Cell(row, 3).GetString(),
+                            Address= sheet1.Cell(row, 4).GetString(),
+                            PhoneNumber= sheet1.Cell(row, 5).GetString(),
+                            ApplicationId = int.Parse(sheet1.Cell(row, 6).GetString()),
+                            TypeOfResponsiblePersonId = int.Parse(sheet1.Cell(row, 6).GetString()),
                         };
 
                         result.Add(ResponsiblePerson);

@@ -7,11 +7,11 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Commands.Creat
 {
     public class CreateResponsiblePersonCommand : IRequest<int>
     {
-        public string OrdinalNumber { get; set; } = null!;
-        public string Inn { get; set; } = null!;
-        public string FullName { get; set; } = null!;
-        public string Address { get; set; } = null!;
-        public string PhoneNumber { get; set; } = null!;
+        public string OrdinalNumber { get; set; }
+        public string Inn { get; set; }
+        public string FullName { get; set; }
+        public string Address { get; set; } 
+        public string PhoneNumber { get; set; }
 
         public int ApplicationId { get; set; }
         public int TypeOfResponsiblePersonId { get; set; }
