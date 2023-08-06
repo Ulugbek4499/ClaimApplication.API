@@ -92,7 +92,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             excelDataTable.Columns.Add("CalculatedLateCharges", typeof(decimal));
             excelDataTable.Columns.Add("AmountOfFine", typeof(decimal));
             excelDataTable.Columns.Add("Percentage", typeof(decimal));
-            excelDataTable.Columns.Add("AppealPredmet Id", typeof(int)); AppealTypeId
+            excelDataTable.Columns.Add("AppealPredmet Id", typeof(int)); 
             excelDataTable.Columns.Add("AppealTypeId", typeof(int));
             excelDataTable.Columns.Add("Created By", typeof(string));
             excelDataTable.Columns.Add("Created Date", typeof(DateTime));
