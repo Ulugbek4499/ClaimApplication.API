@@ -23,5 +23,11 @@
   <ItemGroup>
     <ProjectReference Include="..\ClaimApplication.Infrastructure\ClaimApplication.Infrastructure.csproj" />
   </ItemGroup>
-
+	
+	<dependency>
+		<groupId>com.itextpdf</groupId>
+		<artifactId>bouncy-castle-adapter</artifactId>
+		<version>latest_version</version>
+	</dependency>
+	
 </Project>

@@ -12,6 +12,7 @@
     <PackageReference Include="ClosedXML" Version="0.102.0" />
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="itext7" Version="8.0.1" />
+    <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.1" />
     <PackageReference Include="itext7.pdfhtml" Version="5.0.1" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="itextsharp.xmlworker" Version="5.5.13.3" />
