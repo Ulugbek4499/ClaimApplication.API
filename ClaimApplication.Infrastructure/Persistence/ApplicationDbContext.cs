@@ -1,13 +1,14 @@
 ﻿using System.Reflection;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
+using ClaimApplication.Infrastructure.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClaimApplication.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        //private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
+        private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
 
         public DbSet<AppealPredmet> AppealPredmets { get; set; }
         public DbSet<AppealType> AppealTypes { get; set; }
@@ -18,13 +19,13 @@ namespace ClaimApplication.Infrastructure.Persistence
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
 
-        /*    public ApplicationDbContext(
-              DbContextOptions<ApplicationDbContext> options,
-              AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor)
-              : base(options)
-            {
-                _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
-            }*/
+        public ApplicationDbContext(
+          DbContextOptions<ApplicationDbContext> options,
+          AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor)
+          : base(options)
+        {
+            _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,9 +33,9 @@ namespace ClaimApplication.Infrastructure.Persistence
 
             base.OnModelCreating(modelBuilder);
         }
-        /*     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-             {
-                 optionsBuilder.AddInterceptors(_auditableEntitySaveChangesInterceptor);
-             }*/
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(_auditableEntitySaveChangesInterceptor);
+        }
     }
 }

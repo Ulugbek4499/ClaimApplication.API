@@ -2,6 +2,7 @@
 using ClaimApplication.Application.Commons.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using FluentValidation;
 
 namespace ClaimApplication.Application
 {
@@ -9,7 +10,7 @@ namespace ClaimApplication.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            //ervices.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(option =>
             {
@@ -18,10 +19,7 @@ namespace ClaimApplication.Application
                 option.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             });
-            //services.AddScoped<IUserRefreshToken, RefreshToken>();
-            //services.AddScoped<IJwtToken, JwtToken>();
-            //services.AddScoped<GenericExcelReport>();
-
+            
             return services;
         }
     }

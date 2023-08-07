@@ -8,18 +8,16 @@ namespace ClaimApplication.API
     {
         public static void Main(string[] args)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddApplication();
             builder.Services.AddInfrastructure(builder.Configuration);
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
+            builder.Services.AddApi(builder.Configuration);
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
