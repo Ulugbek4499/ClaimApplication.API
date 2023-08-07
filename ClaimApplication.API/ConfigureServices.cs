@@ -1,8 +1,5 @@
 ﻿using ClaimApplication.API.Commons.Services;
 using ClaimApplication.Application.Commons.Interfaces;
-using Microsoft.OpenApi.Models;
-using Serilog.Events;
-using Serilog;
 using System.Text.Json.Serialization;
 using Telegram.Bot;
 
