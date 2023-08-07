@@ -1,10 +1,8 @@
-﻿using ClaimApplication.Application.Commons.Models;
-using ClaimApplication.Application.UseCases.AppealTypes.Commands.CreateAppealType;
+﻿using ClaimApplication.Application.UseCases.AppealTypes.Commands.CreateAppealType;
 using ClaimApplication.Application.UseCases.AppealTypes.Commands.DeleteAppealType;
 using ClaimApplication.Application.UseCases.AppealTypes.Commands.UpdateAppealType;
 using ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAllAppealTypes;
 using ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAppealTypeById;
-using ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAppealTypesPagination;
 using ClaimApplication.Application.UseCases.AppealTypes.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,13 +28,6 @@ namespace ClaimApplication.API.Controllers
         public async ValueTask<IEnumerable<AppealTypeResponse>> GetAllAppealTypes()
         {
             return await _mediator.Send(new GetAllAppealTypesQuery());
-        }
-
-        [HttpGet("[action]")]
-        public async ValueTask<ActionResult<PaginatedList<AppealTypeResponse>>> GetAllAppealTypesPagination(
-            [FromQuery] GetAppealTypesPaginationQuery query)
-        {
-            return await _mediator.Send(query);
         }
 
         [HttpPut("[action]")]

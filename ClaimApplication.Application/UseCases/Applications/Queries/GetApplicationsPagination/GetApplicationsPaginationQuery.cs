@@ -34,7 +34,24 @@ namespace ClaimApplication.Application.UseCases.Applications.Queries.GetApplicat
 
             if (!string.IsNullOrEmpty(search))
             {
-                Applications = Applications.Where(s => s.AppealText.ToLower().Contains(search.ToLower()));
+                Applications = Applications.Where(s => s.Id.ToString().Contains(search.ToLower()) ||
+                                                       s.Inn.ToLower().Contains(search.ToLower()) ||
+                                                       s.NameOfBussiness.Contains(search.ToLower()) ||
+                                                       s.AppealNumber.ToString().Contains(search.ToLower()) ||
+                                                       s.AppealDate.ToString().Contains(search.ToLower()) ||
+                                                       s.MembershipAgreementNumber.ToLower().Contains(search.ToLower()) ||
+                                                       s.MembershipAgreementDate.ToString().Contains(search.ToLower()) ||
+                                                       s.CertificateNumber.ToLower().Contains(search.ToLower()) ||
+                                                       s.CertificateGivenDate.ToString().Contains(search.ToLower()) ||
+                                                       s.PreviousAppeal.ToLower().Contains(search.ToLower()) ||
+                                                       s.AppealText.ToLower().Contains(search.ToLower()) ||
+                                                       s.TotalClaimAmount.ToString().Contains(search.ToLower()) ||
+                                                       s.MainDebt.ToString().Contains(search.ToLower()) ||
+                                                       s.CalculatedLateCharges.ToString().Contains(search.ToLower()) ||
+                                                       s.AmountOfFine.ToString().Contains(search.ToLower()) ||
+                                                       s.Percentage.ToString().ToLower().Contains(search.ToLower()) ||
+                                                       s.AppealPredmetId.ToString().ToLower().Contains(search.ToLower()) ||
+                                                       s.AppealTypeId.ToString().ToLower().Contains(search.ToLower())); 
             }
             if (Applications is null || Applications.Count() <= 0)
             {

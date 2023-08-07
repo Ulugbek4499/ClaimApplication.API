@@ -35,7 +35,16 @@ namespace ClaimApplication.Application.UseCases.ResponsiblePeople.Queries.GetRes
 
             if (!string.IsNullOrEmpty(search))
             {
-                ResponsiblePeople = ResponsiblePeople.Where(s => s.Inn.ToLower().Contains(search.ToLower()));
+                ResponsiblePeople = ResponsiblePeople.Where(s =>
+                                                                 s.Id.ToString().Contains(search.ToLower()) ||
+                                                                 s.OrdinalNumber.Contains(search.ToLower()) ||
+                                                                 s.Inn.ToLower().Contains(search.ToLower()) ||
+                                                                 s.FullName.ToLower().Contains(search.ToLower()) ||
+                                                                 s.Address.ToLower().Contains(search.ToLower()) ||
+                                                                 s.PhoneNumber.ToLower().Contains(search.ToLower()) ||
+                                                                 s.ApplicationId.ToString().ToLower().Contains(search.ToLower()) ||
+                                                                 s.TypeOfResponsiblePersonId.ToString().ToLower().Contains(search.ToLower())
+                                                             );
             }
             if (ResponsiblePeople is null || ResponsiblePeople.Count() <= 0)
             {

@@ -1,10 +1,8 @@
-﻿using ClaimApplication.Application.Commons.Models;
-using ClaimApplication.Application.UseCases.AppealPredmets.Commands.CreateAppealPredmet;
+﻿using ClaimApplication.Application.UseCases.AppealPredmets.Commands.CreateAppealPredmet;
 using ClaimApplication.Application.UseCases.AppealPredmets.Commands.DeleteAppealPredmet;
 using ClaimApplication.Application.UseCases.AppealPredmets.Commands.UpdateAppealPredmet;
 using ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAllAppealPredmets;
 using ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAppealPredmetById;
-using ClaimApplication.Application.UseCases.AppealPredmets.Queries.GetAppealPredmetsPagination;
 using ClaimApplication.Application.UseCases.AppealPredmets.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,13 +28,6 @@ namespace ClaimApplication.API.Controllers
         public async ValueTask<IEnumerable<AppealPredmetResponse>> GetAllAppealPredmets()
         {
             return await _mediator.Send(new GetAllAppealPredmetsQuery());
-        }
-
-        [HttpGet("[action]")]
-        public async ValueTask<ActionResult<PaginatedList<AppealPredmetResponse>>> GetAllAppealPredmetsPagination(
-            [FromQuery] GetAppealPredmetsPaginationQuery query)
-        {
-            return await _mediator.Send(query);
         }
 
         [HttpPut("[action]")]
