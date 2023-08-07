@@ -2,7 +2,6 @@
 using ClaimApplication.Application.Commons.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using FluentValidation;
 
 namespace ClaimApplication.Application
 {
@@ -19,7 +18,7 @@ namespace ClaimApplication.Application
                 option.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             });
-            
+
             return services;
         }
     }

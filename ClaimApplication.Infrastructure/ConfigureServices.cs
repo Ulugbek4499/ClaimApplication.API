@@ -14,7 +14,7 @@ namespace ClaimApplication.Infrastructure
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DbConnect"));
-               // options.UseLazyLoadingProxies();
+                options.UseLazyLoadingProxies();
             });
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();

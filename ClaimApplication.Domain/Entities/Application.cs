@@ -24,7 +24,7 @@ namespace ClaimApplication.Domain.Entities
         public virtual AppealPredmet AppealPredmet { get; set; }
 
         public int AppealTypeId { get; set; }
-        public AppealType AppealType { get; set; }
+        public virtual AppealType AppealType { get; set; }
 
         public virtual ICollection<ResponsiblePerson> ResponsiblePeople { get; set; } = new List<ResponsiblePerson>();
     }

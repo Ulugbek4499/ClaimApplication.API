@@ -1,6 +1,6 @@
-﻿using ClaimApplication.API.Commons.Services;
+﻿using System.Text.Json.Serialization;
+using ClaimApplication.API.Commons.Services;
 using ClaimApplication.Application.Commons.Interfaces;
-using System.Text.Json.Serialization;
 using Telegram.Bot;
 
 namespace ClaimApplication.API

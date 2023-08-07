@@ -1,5 +1,5 @@
-﻿using ClaimApplication.Application.Commons.Interfaces;
-using System.Security.Claims;
+﻿using System.Security.Claims;
+using ClaimApplication.Application.Commons.Interfaces;
 
 namespace ClaimApplication.API.Commons.Services
 {

@@ -1,7 +1,7 @@
 ﻿using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Commons;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace ClaimApplication.Infrastructure.Persistence.Interceptors
 {

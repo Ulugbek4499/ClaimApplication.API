@@ -1,3 +1,4 @@
+using System.Text;
 using ClaimApplication.Application;
 using ClaimApplication.Infrastructure;
 
@@ -9,6 +10,8 @@ namespace ClaimApplication.API
         public static void Main(string[] args)
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
 
             var builder = WebApplication.CreateBuilder(args);
 

@@ -2,6 +2,7 @@
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Application.UseCases.Applications.Response;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClaimApplication.Application.UseCases.Applications.Queries.GetAllApplications
 {
@@ -18,11 +19,11 @@ namespace ClaimApplication.Application.UseCases.Applications.Queries.GetAllAppli
             _context = context;
         }
 
-        public Task<IEnumerable<ApplicationResponse>> Handle(GetAllApplicationsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ApplicationResponse>> Handle(GetAllApplicationsQuery request, CancellationToken cancellationToken)
         {
-            IEnumerable<Domain.Entities.Application> Applications = _context.Applications;
+            var Applications = await _context.Applications.ToListAsync();
 
-            return Task.FromResult(_mapper.Map<IEnumerable<ApplicationResponse>>(Applications));
+            return _mapper.Map<IEnumerable<ApplicationResponse>>(Applications);
         }
     }
 }

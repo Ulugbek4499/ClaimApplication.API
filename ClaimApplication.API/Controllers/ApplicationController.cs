@@ -7,7 +7,6 @@ using ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationB
 using ClaimApplication.Application.UseCases.Applications.Queries.GetApplicationsPagination;
 using ClaimApplication.Application.UseCases.Applications.Reports;
 using ClaimApplication.Application.UseCases.Applications.Response;
-using ClaimApplication.Application.UseCases.ResponsiblePeople.Reports;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClaimApplication.API.Controllers
@@ -62,6 +61,15 @@ namespace ClaimApplication.API.Controllers
             return File(result.FileContents, result.Options, result.FileName);
         }
 
+        /*      [HttpGet("[action]/{id}")]
+              public async Task<IActionResult> GetApplicationPDF(int id)
+              {
+                  var result = await _mediator.Send(new GetApplicationPDFQuery(id));
+
+                  return File(result.FileContents, result.ContentType, result.FileName);
+              }*/
+
+
         [HttpPut("[action]")]
         public async ValueTask<IActionResult> UpdateApplication(UpdateApplicationCommand command)
         {
@@ -77,3 +85,4 @@ namespace ClaimApplication.API.Controllers
         }
     }
 }
+
