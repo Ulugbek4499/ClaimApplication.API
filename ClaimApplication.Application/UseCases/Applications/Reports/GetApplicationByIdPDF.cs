@@ -41,14 +41,13 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 document.Open();
 
-                PdfPTable table = new PdfPTable(2); // Two columns for the property name and value
+                PdfPTable table = new PdfPTable(2); 
 
-                table.SetWidths(new float[] { 2f, 3f }); // Adjust the column widths accordingly
+                table.SetWidths(new float[] { 2f, 3f }); 
 
                 table.SpacingBefore = 10;
                 table.SpacingAfter = 10;
 
-                // Add the property name and value as cell values
                 table.AddCell("ID");
                 table.AddCell(result.Id.ToString());
                 table.CompleteRow();
