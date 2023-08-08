@@ -61,6 +61,14 @@ namespace ClaimApplication.API.Controllers
             return File(result.FileContents, result.Options, result.FileName);
         }
 
+        [HttpGet("[action]")]
+        public async Task<ActionResult<FormFile>> GetClaimApplicationPdfTemplate(int id)
+        {
+            var result = await _mediator.Send(new GetApplicationPDFQuery(id));
+
+            return File(result.FileContents, result.Options, result.FileName);
+        }
+
         [HttpPut("[action]")]
         public async ValueTask<IActionResult> UpdateApplication(UpdateApplicationCommand command)
         {

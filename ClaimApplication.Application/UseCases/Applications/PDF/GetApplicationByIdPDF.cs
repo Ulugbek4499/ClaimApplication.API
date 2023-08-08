@@ -197,7 +197,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             return pdfFileName;
         }
 
-        public static void AddTextToPdf(Stream source, Stream destination, PdfText text)
+     /*   public static void AddTextToPdf(Stream source, Stream destination, PdfText text)
         {
             AddTextToPdf(
                 source,
@@ -230,5 +230,6 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
                 }
             }
         }
+    */
     }
 }
