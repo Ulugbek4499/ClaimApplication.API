@@ -77,8 +77,8 @@
 
             <div class="left-righit"
                  style="display: flex; justify-content: space-between">
-                <div class="left" style="font-weight: bold">№___________%Application.AppealNumber%</div>
-                <div class="right" style="font-weight: bold">Сана:___________%Application.AppealDate%</div>
+                <div class="left" style="font-weight: bold">№ %AppealNumber%</div>
+                <div class="right" style="font-weight: bold">Сана: %AppealDate%</div>
             </div>
             <div class="info" style="padding-top: 40px; line-height: 30px">
                 <div>
@@ -97,7 +97,7 @@
             </div>
             <div style="display: flex; text-align: center">
                 <div>
-                    _______________________________________%ResponsiblePerson.FullName%
+                    %NameOfBussiness%
                     <div><div>(Корхона номи ёки ж/ш исм-шарифи)</div></div>
                 </div>
                 га нисбатан судга
@@ -105,7 +105,7 @@
 
             <div style="display: flex; text-align: center">
                 <div>
-                    _______________________________________%AppealPredmet.Name%
+                     %AppealPredmet%
                     <div><div>(даъво предмети)</div></div>
                 </div>
                 тўғрисида даъво аризаси киритишда
@@ -118,7 +118,7 @@
 
                 <div style="display: flex">
                     <div>
-                        ______________________________________________________________________________
+                        %FullName%
                         <div>
                             <div style="text-align: center">
                                 (Корхона номи ёки ж/ш исм-шарифи)
@@ -144,7 +144,7 @@
                             <div style="display: flex">
                                 <div style="font-weight: bold; padding-top: 7px">Телефон:</div>
                                 <div style="margin-left: 5px">
-                                    __________________________________________________________________%ResponsiblePerson.PhoneNumber%
+                                    %PhoneNumber%
                                 </div>
                             </div>
                         </div>
@@ -158,13 +158,13 @@
                         </div>
                         <div>
                             <div style="display: flex">
-                                СТИР: _____________; ЖШШИР: _____________________ (агар жисмоний
+                                СТИР: %INN%; ЖШШИР: _____________________ (агар жисмоний
                                 бўлса)
                             </div>
                         </div>
                         <div>
                             <div style="display: flex; font-weight: bold; padding-top: 7px">
-                                Даъво суммаси жами: _____________%Application.TotalClaimAmount% (сўм, АҚШ доллари, Евро, Рубль)
+                                Даъво суммаси жами: %TotalClaimAmount% (сўм, АҚШ доллари, Евро, Рубль)
                                 (даъво
                             </div>
                         </div>
@@ -183,18 +183,18 @@
                             </div>
                             <div>
                                 <div style="display: flex">
-                                    асоссий қарздорлик - _____________%Application.MainDept%(сўм, АҚШ доллари, Евро,
+                                    асоссий қарздорлик - %MainDept%(сўм, АҚШ доллари, Евро,
                                     Рубль);
                                 </div>
                                 <div style="display: flex">
-                                    ҳисобланган пеня - _____________%Application.CalculatedLateCharges%(сўм, АҚШ доллари, Евро,
+                                    ҳисобланган пеня - %CalculatedLateCharges%(сўм, АҚШ доллари, Евро,
                                     Рубль);
                                 </div>
                                 <div style="display: flex">
-                                    жарима - _____________%Application.AmountOfFine%(сўм, АҚШ доллари, Евро, Рубль);
+                                    жарима - %AmountOfFine%(сўм, АҚШ доллари, Евро, Рубль);
                                 </div>
                                 <div style="display: flex">
-                                    фоиз - _____________%Application.Percentage%(сўм, АҚШ доллари, Евро, Рубль).
+                                    фоиз - %Percentage%(сўм, АҚШ доллари, Евро, Рубль).
                                 </div>
 
                                 <div style="display: flex; padding-top: 30px">

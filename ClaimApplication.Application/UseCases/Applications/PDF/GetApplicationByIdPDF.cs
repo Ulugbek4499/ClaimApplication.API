@@ -31,22 +31,22 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
         {
             byte[] ByteArray = GetPdfTemplate(request.Id);
 
-            return new PDFExportResponse(ByteArray, "application/pdf", "ClaimApplication.html");
+            return new PDFExportResponse(ByteArray, "application/pdf", "ClaimApplication");
         }
 
         public byte[] GetPdfTemplate(int applicationId)
         {
             var application = FilterIfApplicationExists(applicationId);
 
-            var result = _mapper.Map<ApplicationResponse>(application);
+            //var result = _mapper.Map<ApplicationResponse>(application);
 
-            return ReturnReadyPdf(GetHtmlTemplate(result));
+            return ReturnReadyPdf(GetHtmlTemplate(application));
         }
 
         private Domain.Entities.Application FilterIfApplicationExists(int id)
                => _dbContext.Applications.Find(id) ?? throw new NotFoundException("There is no Application with this ID.");
 
-        public string GetHtmlTemplate(ApplicationResponse application)
+        public string GetHtmlTemplate(Domain.Entities.Application application)
         {
             var inn = application.Inn;
             var nameOfBussiness = application.NameOfBussiness;
@@ -63,33 +63,38 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             var calculatedLateCharges = application.CalculatedLateCharges;
             var amountOfFine = application.AmountOfFine;
             var percentage = application.Percentage;
-            var appealPredmetId = application.AppealPredmetId;
-            var appealTypeId = application.AppealTypeId;
+            var appealPredmet = application.AppealPredmet.Name;
+            var appealType = application.AppealType.Name;
+            var fullName = application.ResponsiblePeople.FirstOrDefault().FullName;
+            var phoneNumber = application.ResponsiblePeople.FirstOrDefault().PhoneNumber;
+            var innResponsible = application.ResponsiblePeople.FirstOrDefault().Inn;
 
             Dictionary<string, string> data
                 = new Dictionary<string, string>()
                 {
-               {"${INN}", inn},
-               {"${ContractorRegion}",nameOfBussiness},
-               {"${ContractorDistrict}",appealNumber.ToString()},
-               {"${ContractorName}",appealDate.ToString()},
-               {"${ContractorDirector}",membershipAgreementNumber},
-               {"${ContractorInn}",membershipAgreementDate.ToString()},
-               {"${ContractorBankCode}",certificateNumber},
-               {"${ContractorBankName}",certificateGivenDate.ToString()},
-               {"${ContractorSettlementAccount}",previousAppeal},
-               {"${OrgRegion}",appealText},
-               {"${OrgDistrict}",totalClaimAmount.ToString()},
-               {"${OrgAdress}",mainDebt.ToString()},
-               {"${OrgBankSettlementAccount}",calculatedLateCharges.ToString()},
-               {"${OrgBankCode}",amountOfFine.ToString()},
-               {"${OrgBankName}",percentage.ToString()},
-               {"${OrgInn}",appealPredmetId.ToString()},
-               {"${ContractorPosition1}",appealTypeId.ToString()}
+               {"%Inn%", inn},
+               {"%NameOfBussiness%",nameOfBussiness},
+               {"%AppealNumber%",appealNumber.ToString()},
+               {"%AppealDate%",appealDate.ToString()},
+               {"%MembershipAgreementNumber%",membershipAgreementNumber},
+               {"%MembershipAgreementDate%",membershipAgreementDate.ToString()},
+               {"%CertificateNumber%",certificateNumber},
+               {"%CertificateGivenDate%",certificateGivenDate.ToString()},
+               {"%PreviousAppeal%",previousAppeal},
+               {"%AppealText%",appealText},
+               {"%TotalClaimAmount%",totalClaimAmount.ToString()},
+               {"%MainDebt%",mainDebt.ToString()},
+               {"%CalculatedLateCharges%",calculatedLateCharges.ToString()},
+               {"%AmountOfFine%",amountOfFine.ToString()},
+               {"%Percentage%",percentage.ToString()},
+               {"%FullName%",fullName},
+               {"%PhoneNumber%",phoneNumber},
+               {"%innResponsible%",innResponsible},
+               {"%AppealPredmet%",appealPredmet},
+               {"%AppealType%",appealType}
                 };
 
             string fileName = "ClaimApplication.html";
-
 
             return ReturnReadyHtmlAsString(filename: fileName,
                                                       data: data);
@@ -142,10 +147,6 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
             return fileInfo;
         }
-
-
-
-
 
         public static string HtmlToPdf(string htmlFilePath, bool isLandscapeOrientation = false)
         {
