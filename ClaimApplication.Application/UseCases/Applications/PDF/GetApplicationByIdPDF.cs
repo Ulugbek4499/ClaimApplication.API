@@ -115,7 +115,6 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 using (var document = HtmlConverter.ConvertToDocument(htmlString, pdfDocument, documentConvertProperties))
                 {
-                    // Set all margins to 0
                     document.SetMargins(0, 0, 0, 0);
 
                     document.Flush();
