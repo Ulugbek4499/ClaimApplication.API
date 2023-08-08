@@ -89,7 +89,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
                {"%Percentage%",percentage.ToString()},
                {"%FullName%",fullName},
                {"%PhoneNumber%",phoneNumber},
-               {"%innResponsible%",innResponsible},
+               {"%InnResponsible%",innResponsible},
                {"%AppealPredmet%",appealPredmet},
                {"%AppealType%",appealType}
                 };
@@ -114,8 +114,8 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 using (var document = HtmlConverter.ConvertToDocument(htmlString, pdfDocument, documentConvertProperties))
                 {
-                    document.SetBottomMargin(0);
-                    document.SetTopMargin(0);
+                    document.SetBottomMargin(5);
+                    document.SetTopMargin(5);
                     document.Flush();
                 }
             }
