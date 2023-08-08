@@ -1,5 +1,4 @@
-﻿using System.Web.Http;
-using ClaimApplication.Application.UseCases.Applications.Reports;
+﻿using ClaimApplication.Application.UseCases.Applications.Reports;
 using Microsoft.AspNetCore.Mvc;
 using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;

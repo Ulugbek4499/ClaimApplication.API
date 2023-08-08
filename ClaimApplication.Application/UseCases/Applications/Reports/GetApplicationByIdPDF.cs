@@ -41,9 +41,9 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 document.Open();
 
-                PdfPTable table = new PdfPTable(2); 
+                PdfPTable table = new PdfPTable(2);
 
-                table.SetWidths(new float[] { 2f, 3f }); 
+                table.SetWidths(new float[] { 2f, 3f });
 
                 table.SpacingBefore = 10;
                 table.SpacingAfter = 10;

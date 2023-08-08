@@ -51,7 +51,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Queries.GetApplicat
                                                        s.AmountOfFine.ToString().Contains(search.ToLower()) ||
                                                        s.Percentage.ToString().ToLower().Contains(search.ToLower()) ||
                                                        s.AppealPredmetId.ToString().ToLower().Contains(search.ToLower()) ||
-                                                       s.AppealTypeId.ToString().ToLower().Contains(search.ToLower())); 
+                                                       s.AppealTypeId.ToString().ToLower().Contains(search.ToLower()));
             }
             if (Applications is null || Applications.Count() <= 0)
             {

@@ -2,15 +2,14 @@
 using ClaimApplication.Application.Commons.Exceptions;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Application.UseCases.Applications.PDF;
-using ClaimApplication.Application.UseCases.Applications.Response;
 using ClaimApplication.Application.UseCases.ResponsiblePeople.Reports;
-using iText.Html2pdf.Resolver.Font;
 using iText.Html2pdf;
+using iText.Html2pdf.Resolver.Font;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Layout;
 using iText.Layout.Element;
 using MediatR;
-using iText.Kernel.Geom;
-using iText.Layout;
 
 namespace ClaimApplication.Application.UseCases.Applications.Reports
 {
@@ -68,6 +67,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
             var fullName = application.ResponsiblePeople.FirstOrDefault().FullName;
             var phoneNumber = application.ResponsiblePeople.FirstOrDefault().PhoneNumber;
             var innResponsible = application.ResponsiblePeople.FirstOrDefault().Inn;
+            var addressResponsible = application.ResponsiblePeople.FirstOrDefault().Address;
 
             Dictionary<string, string> data
                 = new Dictionary<string, string>()
@@ -90,6 +90,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
                {"%FullName%",fullName},
                {"%PhoneNumber%",phoneNumber},
                {"%InnResponsible%",innResponsible},
+               {"%Address%",addressResponsible},
                {"%AppealPredmet%",appealPredmet},
                {"%AppealType%",appealType}
                 };
@@ -114,8 +115,9 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 using (var document = HtmlConverter.ConvertToDocument(htmlString, pdfDocument, documentConvertProperties))
                 {
-                    document.SetBottomMargin(5);
-                    document.SetTopMargin(5);
+                    // Set all margins to 0
+                    document.SetMargins(0, 0, 0, 0);
+
                     document.Flush();
                 }
             }
