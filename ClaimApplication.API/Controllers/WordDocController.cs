@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
+using Xceed.Words.NET;
 
 namespace ClaimApplication.API.Controllers;
 
@@ -76,48 +74,35 @@ public class WordDocController : BaseApiController
         }
     }
 
-    [HttpPost("[action]")]
-    public IActionResult ConvertDocxBase64ToPdf([FromBody] string base64String)
+
+    [HttpGet("{id}")]
+    public IActionResult GenerateDocx(int id)
     {
-        try
-        {
-            byte[] pdfBytes = Convert.FromBase64String(base64String);
+        var person = new Person { Id = id, Name = "Alex Wilson", Age = 120 };
 
-            using (MemoryStream ms = new MemoryStream(pdfBytes))
-            {
-                ms.Position = 0; // Set stream position to the beginning
-                PdfDocument pdfDocument = PdfReader.Open(ms);
-                PdfDocument newPdfDocument = new PdfDocument();
+        var templatePath = @"C:\Users\ulugb\OneDrive\Desktop\doc.docx";
+        var doc = DocX.Load(templatePath);
 
-                foreach (PdfPage page in pdfDocument.Pages)
-                {
-                    PdfPage newPage = newPdfDocument.AddPage();
-                    XGraphics gfx = XGraphics.FromPdfPage(newPage);
-                   // XForm form = XForm.FromStream(ms);
-                   // gfx.DrawImage(form, 0, 0);
-                }
+        doc.ReplaceText("%NAME%", person.Name);
+        doc.ReplaceText("%AGE%", person.Age.ToString());
 
-                using (MemoryStream newMs = new MemoryStream())
-                {
-                    newPdfDocument.Save(newMs);
-                    newMs.Position = 0;
+        var newFilename = $"output_{person.Name}.docx";
 
-                    return File(newMs.ToArray(), "application/pdf", "output.pdf");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        doc.SaveAs(newFilename);
+
+        var fileBytes = System.IO.File.ReadAllBytes(newFilename);
+        return File(fileBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", newFilename);
     }
 }
 
 
 
-
-
-
+public class Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
 
 
 

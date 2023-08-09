@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClaimApplication.Domain.Memberships
 {
-    internal class Gender
+    public enum Gender
     {
+        Male,
+        Female
     }
 }
