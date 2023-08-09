@@ -9,7 +9,6 @@ namespace ClaimMembershipApplication.MembershipApplication.UseCases.MembershipAp
     {
         public string? NameOfBusiness { get; set; }
         public string? FullNameOfManager { get; set; }
-        public Gender? Gender { get; set; }
         public string? Address { get; set; }
         public string? PostIndex { get; set; }
         public string? PhoneNumber { get; set; }
@@ -48,9 +47,10 @@ namespace ClaimMembershipApplication.MembershipApplication.UseCases.MembershipAp
         public string? EducationDegree { get; set; }
         public string? ExtraInformation { get; set; }
 
-        public int? ForeignLanguageId { get; set; }
-        public int? MainActivityId { get; set; }
-        public int? BussinessCategoryId { get; set; }
+        public Gender? Gender { get; set; }
+        public ForeignLanguage ForeignLanguage { get; set; }
+        public MainActivityType MainActivityType { get; set; }
+        public BussinessCategory BussinessCategory { get; set; }
     }
     public class CreateMembershipApplicationCommandHandler : IRequestHandler<CreateMembershipApplicationCommand, int>
     {

@@ -12,15 +12,18 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClaimApplication.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230806075620_inits")]
-    partial class inits
+    [Migration("20230809105547_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -37,13 +40,13 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ModifyBy")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -67,13 +70,13 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ModifyBy")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -97,7 +100,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("AppealDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("AppealNumber")
                         .HasColumnType("integer");
@@ -116,7 +119,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("CertificateGivenDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("CertificateNumber")
                         .IsRequired()
@@ -126,7 +129,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Inn")
                         .IsRequired()
@@ -137,7 +140,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("MembershipAgreementDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("MembershipAgreementNumber")
                         .IsRequired()
@@ -147,7 +150,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("NameOfBussiness")
                         .IsRequired()
@@ -191,7 +194,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -205,7 +208,7 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("OrdinalNumber")
                         .IsRequired()
@@ -239,13 +242,13 @@ namespace ClaimApplication.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ModifyBy")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -255,6 +258,157 @@ namespace ClaimApplication.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TypeOfResponsiblePeople");
+                });
+
+            modelBuilder.Entity("ClaimApplication.Domain.Memberships.MembershipApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<decimal?>("AnnualExportAmount")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("AnnualImportAmount")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("AnnualPaidTax")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("AnnualProductionAmount")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("AnnualTurnoverOfEnterprise")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("BankAccount")
+                        .HasColumnType("text");
+
+                    b.Property<string>("BithDateOfManager")
+                        .HasColumnType("text");
+
+                    b.Property<string>("BrandName")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("BussinessCategory")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("BussinessRegesteredDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CodeOfBank")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("EducationDegree")
+                        .HasColumnType("text");
+
+                    b.Property<string>("EmailFirst")
+                        .HasColumnType("text");
+
+                    b.Property<string>("EmailSecond")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ExtraInformation")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ExtraProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FaceBookProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Fax")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ForeignLanguage")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("FullNameOfManager")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("Gender")
+                        .HasColumnType("integer");
+
+                    b.Property<bool?>("HasCopyOfRegistrationCerteficate")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Inn")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("MainActivityType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MobileNumberExtra")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MobileNumberFirst")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MobileNumberSecond")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("NameOfBank")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NameOfBusiness")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("NumberOfEmployees")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("NumberOfPassport")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OKED")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PassportGivenFrom")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PostIndex")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RegistrationNumber")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SeriesOfPassport")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SkypeProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TelegramProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("WebSite")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MembershipApplications");
                 });
 
             modelBuilder.Entity("ClaimApplication.Domain.Entities.Application", b =>

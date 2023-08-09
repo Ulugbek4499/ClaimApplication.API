@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClaimApplication.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class inits : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,8 +19,8 @@ namespace ClaimApplication.Infrastructure.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifyBy = table.Column<string>(type: "text", nullable: true)
                 },
@@ -35,8 +36,8 @@ namespace ClaimApplication.Infrastructure.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifyBy = table.Column<string>(type: "text", nullable: true)
                 },
@@ -46,14 +47,72 @@ namespace ClaimApplication.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MembershipApplications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NameOfBusiness = table.Column<string>(type: "text", nullable: true),
+                    FullNameOfManager = table.Column<string>(type: "text", nullable: true),
+                    Gender = table.Column<int>(type: "integer", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    PostIndex = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    MobileNumberFirst = table.Column<string>(type: "text", nullable: true),
+                    MobileNumberSecond = table.Column<string>(type: "text", nullable: true),
+                    Fax = table.Column<string>(type: "text", nullable: true),
+                    MobileNumberExtra = table.Column<string>(type: "text", nullable: true),
+                    EmailFirst = table.Column<string>(type: "text", nullable: true),
+                    EmailSecond = table.Column<string>(type: "text", nullable: true),
+                    WebSite = table.Column<string>(type: "text", nullable: true),
+                    SkypeProfile = table.Column<string>(type: "text", nullable: true),
+                    FaceBookProfile = table.Column<string>(type: "text", nullable: true),
+                    TelegramProfile = table.Column<string>(type: "text", nullable: true),
+                    ExtraProfile = table.Column<string>(type: "text", nullable: true),
+                    BussinessRegesteredDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    RegistrationNumber = table.Column<string>(type: "text", nullable: true),
+                    HasCopyOfRegistrationCerteficate = table.Column<bool>(type: "boolean", nullable: true),
+                    Inn = table.Column<string>(type: "text", nullable: true),
+                    OKED = table.Column<string>(type: "text", nullable: true),
+                    MainActivityType = table.Column<int>(type: "integer", nullable: true),
+                    BussinessCategory = table.Column<int>(type: "integer", nullable: true),
+                    NumberOfEmployees = table.Column<int>(type: "integer", nullable: true),
+                    NameOfBank = table.Column<string>(type: "text", nullable: true),
+                    CodeOfBank = table.Column<string>(type: "text", nullable: true),
+                    BankAccount = table.Column<string>(type: "text", nullable: true),
+                    AnnualTurnoverOfEnterprise = table.Column<decimal>(type: "numeric", nullable: true),
+                    AnnualPaidTax = table.Column<decimal>(type: "numeric", nullable: true),
+                    AnnualExportAmount = table.Column<decimal>(type: "numeric", nullable: true),
+                    AnnualImportAmount = table.Column<decimal>(type: "numeric", nullable: true),
+                    AnnualProductionAmount = table.Column<decimal>(type: "numeric", nullable: true),
+                    BrandName = table.Column<string>(type: "text", nullable: true),
+                    BithDateOfManager = table.Column<string>(type: "text", nullable: true),
+                    SeriesOfPassport = table.Column<string>(type: "text", nullable: true),
+                    NumberOfPassport = table.Column<string>(type: "text", nullable: true),
+                    PassportGivenFrom = table.Column<string>(type: "text", nullable: true),
+                    Nationality = table.Column<string>(type: "text", nullable: true),
+                    ForeignLanguage = table.Column<int>(type: "integer", nullable: true),
+                    EducationDegree = table.Column<string>(type: "text", nullable: true),
+                    ExtraInformation = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifyBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MembershipApplications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TypeOfResponsiblePeople",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifyBy = table.Column<string>(type: "text", nullable: true)
                 },
@@ -71,11 +130,11 @@ namespace ClaimApplication.Infrastructure.Migrations
                     Inn = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     NameOfBussiness = table.Column<string>(type: "text", nullable: false),
                     AppealNumber = table.Column<int>(type: "integer", nullable: false),
-                    AppealDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    AppealDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     MembershipAgreementNumber = table.Column<string>(type: "text", nullable: false),
-                    MembershipAgreementDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MembershipAgreementDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CertificateNumber = table.Column<string>(type: "text", nullable: false),
-                    CertificateGivenDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CertificateGivenDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     PreviousAppeal = table.Column<string>(type: "text", nullable: true),
                     AppealText = table.Column<string>(type: "text", nullable: false),
                     TotalClaimAmount = table.Column<decimal>(type: "numeric", nullable: true),
@@ -85,8 +144,8 @@ namespace ClaimApplication.Infrastructure.Migrations
                     Percentage = table.Column<decimal>(type: "numeric", nullable: true),
                     AppealPredmetId = table.Column<int>(type: "integer", nullable: false),
                     AppealTypeId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifyBy = table.Column<string>(type: "text", nullable: true)
                 },
@@ -120,8 +179,8 @@ namespace ClaimApplication.Infrastructure.Migrations
                     PhoneNumber = table.Column<string>(type: "text", nullable: false),
                     ApplicationId = table.Column<int>(type: "integer", nullable: false),
                     TypeOfResponsiblePersonId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifyDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifyBy = table.Column<string>(type: "text", nullable: true)
                 },
@@ -166,6 +225,9 @@ namespace ClaimApplication.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MembershipApplications");
+
             migrationBuilder.DropTable(
                 name: "ResponsiblePeople");
 

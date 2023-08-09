@@ -2,10 +2,10 @@
 
 namespace ClaimApplication.Domain.Memberships
 {
-    public enum BussinessCategory
+    public enum ForeignLanguage
     {
-       MCHJ,
-       YaTT,
-       Korporation
+        Eng,
+        Rus,
+        Uzb
     }
 }
