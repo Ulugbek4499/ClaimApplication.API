@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using ClaimApplication.Application.Commons.Interfaces;
 using ClaimApplication.Domain.Entities;
+using ClaimApplication.Domain.Memberships;
 using ClaimApplication.Infrastructure.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace ClaimApplication.Infrastructure.Persistence
         public DbSet<ResponsiblePerson> ResponsiblePeople { get; set; }
         public DbSet<TypeOfResponsiblePerson> TypeOfResponsiblePeople { get; set; }
         public DbSet<Domain.Entities.Application> Applications { get; set; }
+        public DbSet<MembershipApplication> MembershipApplications { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

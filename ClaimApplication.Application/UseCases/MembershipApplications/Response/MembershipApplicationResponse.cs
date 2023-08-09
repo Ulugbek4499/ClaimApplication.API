@@ -14,6 +14,6 @@ namespace ClaimApplication.Application.UseCases.Applications.Response
         public string? ModifyBy { get; set; }
         public DateTime ModifyDate { get; set; }
 
-        public virtual ICollection<ResponsiblePersonResponse> ResponsiblePeople { get; set; } = new List<ResponsiblePersonResponse>();
+        //  public virtual ICollection<ResponsiblePersonResponse> ResponsiblePeople { get; set; } = new List<ResponsiblePersonResponse>();
     }
 }
