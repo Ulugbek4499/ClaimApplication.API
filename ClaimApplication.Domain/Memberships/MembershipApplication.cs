@@ -26,8 +26,13 @@ namespace ClaimApplication.Domain.Memberships
         public bool HasCopyOfRegistrationCerteficate { get; set; }
         public string Inn { get; set; }
         public string OKED { get; set; }
+
+        public int MainActivityId { get; set; }
         public MainActivityType MainActivityType { get; set; }
+
+        public int BussinessCategoryId { get; set; }
         public BussinessCategory BussinessCategory { get; set; }
+
         public int NumberOfEmployees { get; set; }
         public string NameOfBank { get; set; }
         public string CodeOfBank { get; set; }
@@ -43,7 +48,10 @@ namespace ClaimApplication.Domain.Memberships
         public string NumberOfPassport { get; set; }
         public string PassportGivenFrom { get; set; }
         public string Nationality { get; set; }
+
+        public int ForeignLanguageId { get; set; }
         public ForeignLanguages ForeignLanguages  { get; set; }
+
         public string EducationDegree { get; set; }
         public string ExtraInformation { get; set; }
     }

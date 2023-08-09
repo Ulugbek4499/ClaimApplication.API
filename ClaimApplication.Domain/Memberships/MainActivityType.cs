@@ -1,6 +1,9 @@
-﻿namespace ClaimApplication.Domain.Memberships
+﻿using ClaimApplication.Domain.Commons;
+
+namespace ClaimApplication.Domain.Memberships
 {
-    public class MainActivityType
+    public class MainActivityType : BaseAuditableEntity
     {
+        public string Name { get; set; }
     }
 }
