@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClaimApplication.Application.UseCases.Memberships.Commands.UpdateMembership
 {
-    internal class UpdateMembershipCommand
+    internal class UpdateMembershipApplicationCommand
     {
     }
 }
