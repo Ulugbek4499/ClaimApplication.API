@@ -1,6 +1,6 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Office.Interop.Word;
 
 namespace ClaimApplication.API.Controllers;
 
@@ -26,8 +26,9 @@ public class WordDocController : BaseApiController
         }
     }
 
+
     [HttpPost("[action]")]
-    public IActionResult Base64ToWordDocument([FromBody] string base64Data)
+    public IActionResult Base64ToWord([FromBody] string base64Data)
     {
         if (string.IsNullOrWhiteSpace(base64Data))
         {
@@ -50,5 +51,35 @@ public class WordDocController : BaseApiController
         }
     }
 
+    [HttpPost("[action]")]
+    public IActionResult Base64ToPdf([FromBody] string base64Data)
+    {
+        if (string.IsNullOrWhiteSpace(base64Data))
+        {
+            return BadRequest("Base64 data is missing.");
+        }
+
+        try
+        {
+            byte[] pdfBytes = Convert.FromBase64String(base64Data);
+
+            string contentType = "application/pdf";
+            string fileName = "document.pdf";
+
+            return File(pdfBytes, contentType, fileName);
+        }
+        catch (FormatException)
+        {
+            return BadRequest("Invalid Base64 data.");
+        }
+    }
 }
+
+
+
+
+
+
+
+
 
