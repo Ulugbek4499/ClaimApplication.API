@@ -33,4 +33,8 @@
     <ProjectReference Include="..\ClaimApplication.Domain\ClaimApplication.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Memberships\Response\" />
+  </ItemGroup>
+
 </Project>
