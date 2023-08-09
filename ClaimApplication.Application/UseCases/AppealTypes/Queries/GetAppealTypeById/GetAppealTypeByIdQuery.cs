@@ -11,8 +11,8 @@ namespace ClaimApplication.Application.UseCases.AppealTypes.Queries.GetAppealTyp
 
     public class GetAppealTypeByIdQueryHandler : IRequestHandler<GetAppealTypeByIdQuery, AppealTypeResponse>
     {
-        IApplicationDbContext _dbContext;
-        IMapper _mapper;
+        readonly IApplicationDbContext _dbContext;
+        readonly IMapper _mapper;
 
         public GetAppealTypeByIdQueryHandler(IApplicationDbContext dbContext, IMapper mapper)
         {

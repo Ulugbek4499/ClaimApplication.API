@@ -1,5 +1,4 @@
-﻿using ClaimApplication.Application.UseCases.ResponsiblePeople.Response;
-using ClaimApplication.Domain.Memberships;
+﻿using ClaimApplication.Domain.Memberships;
 
 namespace ClaimApplication.Application.UseCases.Applications.Response
 {

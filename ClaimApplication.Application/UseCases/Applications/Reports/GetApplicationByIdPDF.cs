@@ -28,7 +28,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
             var result = _mapper.Map<ApplicationResponse>(application);
 
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new())
             {
                 Document document = new Document();
                 document.SetMargins(20, 20, 40, 40);
@@ -36,7 +36,7 @@ namespace ClaimApplication.Application.UseCases.Applications.Reports
 
                 PdfWriter writer = PdfWriter.GetInstance(document, ms);
 
-                HeaderFooterHelper headerFooter = new HeaderFooterHelper();
+                HeaderFooterHelper headerFooter = new();
                 writer.PageEvent = headerFooter;
 
                 document.Open();
