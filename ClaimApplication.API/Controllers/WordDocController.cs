@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClaimApplication.API.Controllers;
 
@@ -48,7 +50,5 @@ public class WordDocController : BaseApiController
         }
     }
 
-    
 }
-
 
