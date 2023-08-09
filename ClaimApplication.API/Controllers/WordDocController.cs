@@ -1,6 +1,7 @@
-﻿using System.Runtime.InteropServices;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Office.Interop.Word;
+﻿using Microsoft.AspNetCore.Mvc;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 
 namespace ClaimApplication.API.Controllers;
 
@@ -51,6 +52,7 @@ public class WordDocController : BaseApiController
         }
     }
 
+
     [HttpPost("[action]")]
     public IActionResult Base64ToPdf([FromBody] string base64Data)
     {
@@ -71,6 +73,42 @@ public class WordDocController : BaseApiController
         catch (FormatException)
         {
             return BadRequest("Invalid Base64 data.");
+        }
+    }
+
+    [HttpPost("[action]")]
+    public IActionResult ConvertDocxBase64ToPdf([FromBody] string base64String)
+    {
+        try
+        {
+            byte[] pdfBytes = Convert.FromBase64String(base64String);
+
+            using (MemoryStream ms = new MemoryStream(pdfBytes))
+            {
+                ms.Position = 0; // Set stream position to the beginning
+                PdfDocument pdfDocument = PdfReader.Open(ms);
+                PdfDocument newPdfDocument = new PdfDocument();
+
+                foreach (PdfPage page in pdfDocument.Pages)
+                {
+                    PdfPage newPage = newPdfDocument.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(newPage);
+                   // XForm form = XForm.FromStream(ms);
+                   // gfx.DrawImage(form, 0, 0);
+                }
+
+                using (MemoryStream newMs = new MemoryStream())
+                {
+                    newPdfDocument.Save(newMs);
+                    newMs.Position = 0;
+
+                    return File(newMs.ToArray(), "application/pdf", "output.pdf");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }
