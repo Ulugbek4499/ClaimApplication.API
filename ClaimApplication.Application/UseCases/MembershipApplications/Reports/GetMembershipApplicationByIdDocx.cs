@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClaimApplication.Application.UseCases.MembershipApplications.Reports
 {
-    internal class GetMembershipApplicationByIdDocx
+    public class GetMembershipApplicationByIdDocx
     {
     }
 }
